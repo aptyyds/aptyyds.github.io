@@ -17,26 +17,19 @@
   
   
   <entry>
-    <title>今年算法-2</title>
-    <link href="/2024/07/02/%E4%BB%8A%E5%B9%B4%E7%AE%97%E6%B3%95-2/"/>
-    <url>/2024/07/02/%E4%BB%8A%E5%B9%B4%E7%AE%97%E6%B3%95-2/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>今日算法-1</title>
     <link href="/2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-1/"/>
     <url>/2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-1/</url>
     
-    <content type="html"><![CDATA[<p>LRU算法实践</p>]]></content>
+    <content type="html"><![CDATA[<p>LRU算法实践</p><p>LRU</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>算法笔记</tag>
+      
+    </tags>
     
   </entry>
   
