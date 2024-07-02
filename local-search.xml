@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>今日算法-3</title>
+    <link href="/2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-3/"/>
+    <url>/2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-3/</url>
+    
+    <content type="html"><![CDATA[<h1 id="今日算法-2"><a href="#今日算法-2" class="headerlink" title="今日算法-2"></a>今日算法-2</h1><p>跳跃游戏</p><p>利用贪心算法：</p><p>如何理解贪心算法</p><p>局部最优解求得整体</p><p>想法1：最小；极限假设，不行</p><p>想法2：最大；可行只要求得最大覆盖范围大于数组的长度即可，</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>今年算法-2</title>
     <link href="/2024/07/02/%E4%BB%8A%E5%B9%B4%E7%AE%97%E6%B3%95-2/"/>
     <url>/2024/07/02/%E4%BB%8A%E5%B9%B4%E7%AE%97%E6%B3%95-2/</url>
