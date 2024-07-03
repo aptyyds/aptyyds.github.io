@@ -4,6 +4,38 @@
   
   
   <entry>
+    <title>项目笔记-2</title>
+    <link href="/2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-2/"/>
+    <url>/2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-2/</url>
+    
+    <content type="html"><![CDATA[<p><strong>7月3日</strong></p><p>我认为我现在的开发方法是不对的。我是要在开发中发现问题，不断学习，而不是一直迷迷糊糊的，你需要清楚自己需要知道什么。</p><p>1、业务开发的流程</p><p><strong>2、redis如何使用</strong></p><p>3、springboot各种注解</p><p>4、Java开发的代码的逻辑框架。</p><p>实现功能：</p><p><strong>登录拦截器优化</strong></p><p>：获取token</p><p>查询redis</p><p>3.保存到ThreadLocal</p><p>4.刷新</p><p>5.放行</p><p>只要用户一直访问，就不刷新：分类拦截</p><p>无需登录就可查看的</p><p>再加一个拦截器，拦截一切，仅仅是刷新</p><p><strong>第二次：需要登陆的</strong></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-1</title>
+    <link href="/2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-1-1/"/>
+    <url>/2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-1-1/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>项目笔记-1</title>
     <link href="/2024/07/02/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-1/"/>
     <url>/2024/07/02/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-1/</url>
@@ -43,6 +75,12 @@
     <content type="html"><![CDATA[<h1 id="今日算法-2"><a href="#今日算法-2" class="headerlink" title="今日算法-2"></a>今日算法-2</h1><p>跳跃游戏</p><p>利用贪心算法：</p><p>如何理解贪心算法</p><p>局部最优解求得整体</p><p>想法1：最小；极限假设，不行</p><p>想法2：最大；可行只要求得最大覆盖范围大于数组的长度即可，</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
     
   </entry>
   
