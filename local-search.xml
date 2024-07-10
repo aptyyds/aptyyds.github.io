@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>今日算法-6</title>
+    <link href="/2024/07/10/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-6/"/>
+    <url>/2024/07/10/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-6/</url>
+    
+    <content type="html"><![CDATA[<p>动态规划</p><p>1.目标和</p><p>问题转化：01背包问题</p><p>加法总和：x；减法总和sum-x</p><p>要求：x-（sum-x） &#x3D; target</p><p>x &#x3D; （target+ sum）&#x2F;2</p><p>装满容量为x的背包，有几种方法</p><p>x；就是bagSize；</p><p>2.一和零</p><p>五部曲；</p><p>背包有两个维度，m, n ；不同长度的字符串就是不同大小的物品</p><p>dp[i][j]最多有i个0和j个1的strs的最大子集的大小为dp[i][j]</p><p>之后计算1，0合；再外层遍历物品，内层遍历背包，倒序；注意类型转化以及代码结构</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>八股-1</title>
     <link href="/2024/07/10/%E5%85%AB%E8%82%A1-1/"/>
     <url>/2024/07/10/%E5%85%AB%E8%82%A1-1/</url>
