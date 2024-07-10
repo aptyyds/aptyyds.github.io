@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>八股-1</title>
+    <link href="/2024/07/10/%E5%85%AB%E8%82%A1-1/"/>
+    <url>/2024/07/10/%E5%85%AB%E8%82%A1-1/</url>
+    
+    <content type="html"><![CDATA[<p>操作系统：</p><p>内存管理：</p><p>1.为什么要有虚拟内存？</p><p>分页（多级页表，TLB）、分段、段页式内存管理，Linux内存管理</p><p>2.malloc是如何分配内存的？</p><p>非系统调用，函数，动态分配内存</p><p>brk（）；</p><p>mmap（）；</p><p>malloc 通过brk（）申请，free释放时，内存不还操作系统，缓存在mallco池；</p><p>通过mmap（）申请 ，free释放，会把内存归还给操作系统。真正释放</p><p>3.内存满了之后</p><p>后台内存回收，kswaped内核线程</p><p>直接内存回收，</p><p>OOM机制</p><p>SMP架构</p><p>NUMA架构</p><p>保护，不被OOM杀掉：调正进程值：&#x2F;proc&#x2F;[pid]&#x2F;oom_socre_adj值，改变打分</p><p>计算机网络</p><p>Http</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>八股</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>项目笔记-3</title>
     <link href="/2024/07/09/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-3/"/>
     <url>/2024/07/09/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-3/</url>
