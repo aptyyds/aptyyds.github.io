@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>今日算法-9</title>
+    <link href="/2024/07/13/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-9/"/>
+    <url>/2024/07/13/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-9/</url>
+    
+    <content type="html"><![CDATA[<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="单词拆分"><a href="#单词拆分" class="headerlink" title="单词拆分"></a>单词拆分</h2><p>反向；用字典装满字符串</p><p>dp数组的含义：字符串的长度为i，dp[i] true</p><p>dp[0]空字符串</p><p>dp[s.size]</p><p>if([j, i ) , &amp;&amp; dp[i]){</p><p>   true</p><p>}</p><p>dp[0]&#x3D; true</p><p>组合数和排列数</p><p>排列数，有顺序；先包</p><p>for(i&#x3D;1 ; i&lt; &#x3D; s. size ; i++){<br>    for(j&lt;0 , j&lt; i ; j++){</p><pre><code class="hljs">截取后是否在字典里；</code></pre><p> true；</p><p>}</p><p>打印</p><p>}</p><p>知识点：截取字符串：s.substring(j , i)</p><p>判读包含：set.contains( );</p><p>多重背包</p><h2 id="打家劫舍"><a href="#打家劫舍" class="headerlink" title="打家劫舍"></a>打家劫舍</h2><h2 id="打家劫舍II"><a href="#打家劫舍II" class="headerlink" title="打家劫舍II"></a>打家劫舍II</h2><p>有环路，可以断开，分成两份，然后判断最大值；只是nums[]的取值单位不一样；一份是不取第一个，一份是不取最后一个。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>每日八股-3</title>
     <link href="/2024/07/13/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-3/"/>
     <url>/2024/07/13/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-3/</url>
