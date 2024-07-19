@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>今日算法-10</title>
+    <link href="/2024/07/19/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-10/"/>
+    <url>/2024/07/19/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-10/</url>
+    
+    <content type="html"><![CDATA[<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="打家劫舍"><a href="#打家劫舍" class="headerlink" title="打家劫舍|||"></a>打家劫舍|||</h2><p>结合二叉树</p><p>后序遍历，每次只取最大的子树，判断是否偷根节点。</p><p>递归</p><p>树形DP，如何把树转化成数组，将陌生转化为熟悉，结合前面已经知道的二叉树遍历。</p><h2 id="买股票的最佳时机"><a href="#买股票的最佳时机" class="headerlink" title="买股票的最佳时机"></a>买股票的最佳时机</h2>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>每日八股-5</title>
+    <link href="/2024/07/18/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-5/"/>
+    <url>/2024/07/18/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-5/</url>
+    
+    <content type="html"><![CDATA[<p>java基础：</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>八股</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>每日八股-4</title>
     <link href="/2024/07/17/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-4/"/>
     <url>/2024/07/17/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-4/</url>
