@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>今日算法-11</title>
+    <link href="/2024/07/20/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-11/"/>
+    <url>/2024/07/20/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-11/</url>
+    
+    <content type="html"><![CDATA[<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="买股票的最佳时机II"><a href="#买股票的最佳时机II" class="headerlink" title="买股票的最佳时机II"></a>买股票的最佳时机II</h2><p>思考：</p><p>递归性：</p><ul><li>dp[i][0] 表示第i天持有股票所得现金。</li><li>dp[i][1] 表示第i天不持有股票所得最多现金</li></ul><p>第i天持有股票即dp[i][0]，如果是第i天买入股票，所得现金就是昨天不持有股票的所得现金 减去 今天的股票价格 即：dp[i - 1][1] - prices[i]</p><p>如果第i天不持有股票即dp[i][1]的情况， 依然可以由两个状态推出来</p><ul><li>第i-1天就不持有股票，那么就保持现状，所得现金就是昨天不持有股票的所得现金 即：dp[i - 1][1]</li><li>第i天卖出股票，所得现金就是按照今天股票价格卖出后所得现金即：prices[i] + dp[i - 1][0]</li></ul><p>还需加深理解数组含义</p><h2 id="买股票III"><a href="#买股票III" class="headerlink" title="买股票III"></a>买股票III</h2><p>两笔交易，但是不可同时进行</p><p>定义</p><p>初始化</p><p>递推公式</p><p>其实再复杂的问题，都可以回归到爬楼梯问题上，我是如何到这个楼梯的，一开始我又在哪里，我该如何爬楼梯；最终会到哪里</p><p>这个题目的细节处理很关键，弄明白各个阶段的dp数组的定义，</p><h2 id="IV"><a href="#IV" class="headerlink" title="IV"></a>IV</h2><p>k笔交易</p><p>范围扩到dp[i] [2k]</p><p>初始化与3类似，奇数和偶数分开</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>今日算法-10</title>
     <link href="/2024/07/19/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-10/"/>
     <url>/2024/07/19/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-10/</url>
