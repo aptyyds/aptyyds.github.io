@@ -4,6 +4,63 @@
   
   
   <entry>
+    <title>项目笔记-9</title>
+    <link href="/2024/07/23/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-9/"/>
+    <url>/2024/07/23/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-9/</url>
+    
+    <content type="html"><![CDATA[<p>关于redis操作部分的数据类型转化问题</p><p>putAll（）函数的调用，在没有将数据类型转化成String，导致出错</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">Map&lt;String , Object&gt; userMap = BeanUtil.beanToMap(userDTO);<br>Map&lt;String, Object&gt; userMap = BeanUtil.beanToMap(userDTO, <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String, Object&gt;(), create().setIgnoreNullValue(<span class="hljs-literal">true</span>).setFieldValueEditor((fieldName, fieldValue) -&gt; fieldValue.toString()));<br></code></pre></td></tr></table></figure><p>对比一二行，第二行 使用了FiledValueEditor，将每个字段的值都转化为String类型</p><p> <strong><code>BeanUtil.beanToMap(userDTO, new HashMap&lt;String, Object&gt;(), create().setIgnoreNullValue(true).setFieldValueEditor((fieldName, fieldValue) -&gt; fieldValue.toString()))</code></strong> :</p><ul><li>这个方法使用了一个 <code>FieldValueEditor</code>，它将每个字段的值都转换为 <code>String</code> 类型。<code>fieldValue.toString()</code> 的调用确保了无论字段的原始类型是什么，最终都将以 <code>String</code> 类型存储在 <code>Map</code> 中。</li><li>这样，当你将这个 <code>Map</code> 存储到 Redis 时，所有的值都已经是 <code>String</code> 类型，避免了 <code>ClassCastException</code> 的问题</li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><strong>类型转换</strong> : 使用 <code>FieldValueEditor</code> 将所有字段值转换为 <code>String</code> 类型，确保了你在存储和序列化数据时不会出现类型不匹配的问题。</li><li><strong>数据一致性</strong> : 这样做确保了在 Redis 存储和检索数据时，一致地处理所有数据为 <code>String</code> 类型，符合 <code>StringRedisSerializer</code> 的要求。</li></ul><p> <strong>改进建议</strong> :</p><ul><li>如果你在不同的地方需要不同的数据类型（如 <code>Long</code> 和 <code>String</code>），考虑使用适当的序列化器或者在应用层处理数据类型转换。</li><li>确保所有操作 Redis 的地方数据类型一致，可以有效减少类似的问题。</li></ul><p>你现在的解决方案是通过强制将所有字段值转换为 <code>String</code>，这在处理 Redis 数据时是一种有效的方式。</p><p>拦截器优化</p><p>两个拦截器</p><p>第一个刷新</p><p>第二个拦截需登录new</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-12</title>
+    <link href="/2024/07/23/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-12/"/>
+    <url>/2024/07/23/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-12/</url>
+    
+    <content type="html"><![CDATA[<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="股票问题"><a href="#股票问题" class="headerlink" title="股票问题"></a>股票问题</h2><h3 id="最佳买卖股票时机含冷冻期"><a href="#最佳买卖股票时机含冷冻期" class="headerlink" title="最佳买卖股票时机含冷冻期"></a>最佳买卖股票时机含冷冻期</h3><p>状态较为复杂，定义四种状态的dp数组，初始化时根据公式判断；</p><p>分解为 ： 持股 ； 不持有股票（保持卖出状态 ， 今天卖出） ；冷冻状态</p><h3 id="买卖股票的最佳时间含手续费"><a href="#买卖股票的最佳时间含手续费" class="headerlink" title="买卖股票的最佳时间含手续费"></a>买卖股票的最佳时间含手续费</h3><p>这是关于买卖II的变形，只要在卖出&#x2F;买入时考虑手续费即可，其余相同</p><h3 id="股票问题总结"><a href="#股票问题总结" class="headerlink" title="股票问题总结"></a>股票问题总结</h3><p>最关键的是如何分解股票的各个状态；如何用dp数组去定义，然后根据定义推出递推公式，再初始化，尤其要关注定义不能混淆。要清晰分解可能的状态。而递推公式；考虑的其实都是如何从前一个状态到后一个状态，就像爬楼梯一样；无非是决定走哪一步，走不走的问题。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>每日八股-6</title>
+    <link href="/2024/07/21/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-6/"/>
+    <url>/2024/07/21/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-6/</url>
+    
+    <content type="html"><![CDATA[<p>BigDecimal避免精度丢失</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>八股</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>今日算法-11</title>
     <link href="/2024/07/20/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-11/"/>
     <url>/2024/07/20/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-11/</url>
