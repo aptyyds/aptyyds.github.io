@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>今日算法-13</title>
+    <link href="/2024/07/27/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-13/"/>
+    <url>/2024/07/27/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-13/</url>
+    
+    <content type="html"><![CDATA[<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><h3 id="最长上升子序列"><a href="#最长上升子序列" class="headerlink" title="最长上升子序列"></a>最长上升子序列</h3><h4 id="关于初始化"><a href="#关于初始化" class="headerlink" title="关于初始化"></a>关于初始化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Arrays.fill(dp, <span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure><p>详细解释：</p><ul><li><code>Arrays.fill(array, value)</code>：将 <code>array</code> 数组的所有元素都设置为 <code>value</code>。</li><li><code>dp</code>：是你要填充的数组。</li><li><code>1</code>：是你要填充到数组每个元素的值。</li></ul><p>关于思想</p><h3 id="最长连续递增子序列"><a href="#最长连续递增子序列" class="headerlink" title="最长连续递增子序列"></a>最长连续递增子序列</h3><p>简化成一维遍历，然后对比的是上一个即可。</p><h3 id="最长重复子数组"><a href="#最长重复子数组" class="headerlink" title="最长重复子数组"></a>最长重复子数组</h3><p>逐个对比</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure><h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><p>知识点：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Java">charchar1 = text1.charAt(i-<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure><p><code>char char1 = text1.charAt(i-1);</code> 是 Java 中用于从字符串 <code>text1</code> 中获取指定位置的字符的一种方式。具体来说，这行代码从 <code>text1</code> 字符串中获取第 <code>i-1</code> 个位置上的字符，并将其赋值给变量 <code>char1</code>。</p><p>详细解释如下：</p><ul><li><code>char char1</code>：声明一个 <code>char</code> 类型的变量 <code>char1</code>。</li><li><code>text1</code>：是一个字符串对象。</li><li><code>charAt(i-1)</code>：是 <code>String</code> 类中的一个方法，用于返回字符串中指定索引处的字符。索引从 <code>0</code> 开始计数，因此 <code>charAt(i-1)</code> 表示获取字符串 <code>text1</code> 中第 <code>i-1</code> 个位置的字符。</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>项目笔记-9</title>
     <link href="/2024/07/23/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-9/"/>
     <url>/2024/07/23/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-9/</url>
