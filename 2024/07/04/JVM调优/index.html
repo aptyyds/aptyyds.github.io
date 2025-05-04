@@ -19,16 +19,17 @@
   <meta name="author" content="君实">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于JVM调优">
+    <meta name="description" content="关于JVM调优记录 首先 ，线上问题主要是两类 ，CPU和内存问题 。  先从JVM的底层结构出发 ，再到相关工具的使用 发现问题 ，最后如何解决问题  。 今天遇到的是一个内存飙高的问题 。 项目背景 星火工厂，在长时间运行后，出现了服务器响应缓慢、最终导致系统崩溃的情况，初步怀疑是内存泄露导致的内存溢出（OutOfMemoryError）。 问题分析过程  获取堆转储文件  在系统的 JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM调优">
-<meta property="og:url" content="http://example.com/2025/05/04/JVM%E8%B0%83%E4%BC%98/index.html">
+<meta property="og:url" content="http://example.com/2024/07/04/JVM%E8%B0%83%E4%BC%98/index.html">
 <meta property="og:site_name" content="星月夜">
-<meta property="og:description" content="关于JVM调优">
+<meta property="og:description" content="关于JVM调优记录 首先 ，线上问题主要是两类 ，CPU和内存问题 。  先从JVM的底层结构出发 ，再到相关工具的使用 发现问题 ，最后如何解决问题  。 今天遇到的是一个内存飙高的问题 。 项目背景 星火工厂，在长时间运行后，出现了服务器响应缓慢、最终导致系统崩溃的情况，初步怀疑是内存泄露导致的内存溢出（OutOfMemoryError）。 问题分析过程  获取堆转储文件  在系统的 JVM">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-05-04T09:17:13.000Z">
-<meta property="article:modified_time" content="2025-05-04T09:17:55.826Z">
+<meta property="article:published_time" content="2024-07-04T09:17:13.000Z">
+<meta property="article:modified_time" content="2025-05-04T13:13:37.934Z">
 <meta property="article:author" content="君实">
+<meta property="article:tag" content="实战经验记录">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -210,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-05-04 17:17" pubdate>
-          2025年5月4日 下午
+        <time datetime="2024-07-04 17:17" pubdate>
+          2024年7月4日 下午
         </time>
       </span>
     
@@ -222,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5 字
+          939 字
         
       </span>
     
@@ -233,7 +234,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -275,7 +276,41 @@
             
               <div class="markdown-body">
                 
-                <p>关于JVM调优</p>
+                <p>关于JVM调优记录</p>
+<p>首先 ，线上问题主要是两类 ，CPU和内存问题 。 </p>
+<p>先从JVM的底层结构出发 ，再到相关工具的使用 发现问题 ，最后如何解决问题  。</p>
+<p>今天遇到的是一个内存飙高的问题 。</p>
+<p><strong>项目背景</strong></p>
+<p>星火工厂，在长时间运行后，出现了服务器响应缓慢、最终导致系统崩溃的情况，初步怀疑是内存泄露导致的内存溢出（OutOfMemoryError）。</p>
+<p><strong>问题分析过程</strong></p>
+<ol>
+<li><p>获取堆转储文件</p>
+<ul>
+<li>在系统的 JVM 启动参数中添加 <code>-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/data/dump</code>，这样当系统再次出现内存溢出时，就可以在指定路径下获取堆转储文件。经过一段时间的观察，成功获取到了堆转储文件。</li>
+</ul>
+</li>
+<li><p>使用 MAT 工具分析堆转储文件</p>
+<ul>
+<li><strong>查看直方图（Histogram）视图</strong>：使用 MAT 打开堆转储文件后，首先查看直方图视图。发现 <code>com.xinghuo.factory.entity.ProductRecord</code>对象（产品记录实体类）的数量异常庞大，占用了相当大的内存空间。这表明产品记录相关的操作可能存在问题。</li>
+<li><strong>分析引用链（Reference Chain）</strong>：右键点击 <code>ProductRecord</code>对象，选择 “List objects -&gt; with incoming references” 来查看引用链。发现这些 <code>ProductRecord</code>对象被一个名为 <code>ProductRecordCache</code>的缓存类大量引用。这个缓存类是开发团队为了提高产品记录查询效率而自定义的一个本地缓存。</li>
+<li><strong>深入研究缓存类（Cache Class）</strong>：进一步查看 <code>ProductRecordCache</code>类的内部结构，发现它是一个简单的 <code>HashMap</code>实现的缓存，用于存储从数据库查询出来的产品记录。但是，在系统的业务逻辑中，每次有新的产品记录生成或者更新时，都会将新的记录添加到这个缓存中，而没有对缓存中的旧记录进行清理或者过期处理。这就导致了随着时间的推移和生产活动的持续进行，缓存中的 <code>ProductRecord</code>对象越来越多，最终耗尽内存。</li>
+</ul>
+<p><strong>有一个缓存类；大量查看 <code>ProductRecordCache</code>类的内部结构，发现它是一个简单的 <code>HashMap</code>实现的缓存，用于存储从数据库查询出来的产品记录。但是，在系统的业务逻辑中，每次有新的产品记录生成或者更新时，都会将新的记录添加到这个缓存中，而没有对缓存中的旧记录进行清理或者过期处理。这就导致了随着时间的推移和生产活动的持续进行，缓存中的 <code>ProductRecord</code>对象越来越多，最终耗尽内存。没有清理</strong></p>
+</li>
+</ol>
+<p><strong>解决方案</strong></p>
+<ol>
+<li>优化缓存策略<ul>
+<li>为 <code>ProductRecordCache</code>添加了一个定时清理机制。根据业务需求，设置每隔 24 小时清理一次缓存中超过一周未被访问的 <code>ProductRecord</code>对象。<br>设置缓存过期时间</li>
+<li>在产品记录更新或者删除的业务逻辑中，同时更新缓存中的对应记录，确保缓存数据的准确性和及时性。</li>
+</ul>
+</li>
+<li>内存监控与预警<ul>
+<li>在系统中添加了内存监控模块，实时监测 JVM 内存使用情况。当内存使用率达到一定阈值（如 80%）时，通过邮件或者系统消息的方式通知开发人员和运维人员，以便及时采取措施，避免系统崩溃。</li>
+</ul>
+</li>
+</ol>
+<p>经过以上优化和改进后，星火工厂的生产管理系统在长时间运行后不再出现内存溢出问题，服务器响应速度也恢复正常，有效保障了工厂生产管理活动的顺利进行。</p>
 
                 
               </div>
@@ -284,6 +319,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C%E8%AE%B0%E5%BD%95/" class="print-no-link">#实战经验记录</a>
+      
+    </div>
   
 </div>
 
@@ -294,7 +336,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JVM调优</div>
-      <div>http://example.com/2025/05/04/JVM调优/</div>
+      <div>http://example.com/2024/07/04/JVM调优/</div>
     </div>
     <div class="license-meta">
       
@@ -306,7 +348,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年5月4日</div>
+          <div>2024年7月4日</div>
         </div>
       
       
@@ -338,12 +380,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2024/07/09/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-5/" title="今日算法 -5">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">今日算法 -5</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/04/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/" title="从信号量到分布式锁 ——并发的解决方法以及理解">
-                        <span class="hidden-mobile">从信号量到分布式锁 ——并发的解决方法以及理解</span>
+                      <a href="/2024/07/03/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-4/" title="今日算法-4">
+                        <span class="hidden-mobile">今日算法-4</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
