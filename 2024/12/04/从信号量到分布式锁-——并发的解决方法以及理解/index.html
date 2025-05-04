@@ -19,22 +19,22 @@
   <meta name="author" content="君实">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于一些必须记忆的函数 charAt() ; 返回对应位置的字符； getOrDefault（）；V getOrDefault(Object key, V defaultValue) containsKey（）；是否包含这个键 import java.util.Arrays;import java.util.LinkedList; class Solution {    public int[][">
+    <meta name="description" content="从信号量到分布式锁 ——并发的解决方法以及理解并发问题如何解决? 并发的本质是对有限资源的不对等抢占 。 操作系统底层我们从线程出发，因为线程是操作系统能够进行运算调度的最小单位  ，线程同步其中一种方法是信号量 ，信号量通常表示资源的数量 ，通过两个原子操作的系统调用函数来控制信号量 ，P、V操作， 进入减一 ，退出加一  ，等于0时阻塞 ，相当于互斥锁抢占了资源；当你明白了这个原理 ，就可以理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="今日算法-18">
-<meta property="og:url" content="http://example.com/2024/09/16/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-18/index.html">
+<meta property="og:title" content="从信号量到分布式锁 ——并发的解决方法以及理解">
+<meta property="og:url" content="http://example.com/2024/12/04/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="星月夜">
-<meta property="og:description" content="关于一些必须记忆的函数 charAt() ; 返回对应位置的字符； getOrDefault（）；V getOrDefault(Object key, V defaultValue) containsKey（）；是否包含这个键 import java.util.Arrays;import java.util.LinkedList; class Solution {    public int[][">
+<meta property="og:description" content="从信号量到分布式锁 ——并发的解决方法以及理解并发问题如何解决? 并发的本质是对有限资源的不对等抢占 。 操作系统底层我们从线程出发，因为线程是操作系统能够进行运算调度的最小单位  ，线程同步其中一种方法是信号量 ，信号量通常表示资源的数量 ，通过两个原子操作的系统调用函数来控制信号量 ，P、V操作， 进入减一 ，退出加一  ，等于0时阻塞 ，相当于互斥锁抢占了资源；当你明白了这个原理 ，就可以理">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-09-16T06:37:11.000Z">
-<meta property="article:modified_time" content="2024-09-22T13:13:53.226Z">
+<meta property="article:published_time" content="2024-12-04T12:25:36.000Z">
+<meta property="article:modified_time" content="2025-05-04T12:33:55.565Z">
 <meta property="article:author" content="君实">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="技术理解">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>今日算法-18 - 星月夜</title>
+  <title>从信号量到分布式锁 ——并发的解决方法以及理解 - 星月夜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="今日算法-18"></span>
+            <span id="subtitle" data-typed-text="从信号量到分布式锁 ——并发的解决方法以及理解"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-16 14:37" pubdate>
-          2024年9月16日 下午
+        <time datetime="2024-12-04 20:25" pubdate>
+          2024年12月4日 晚上
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          571 字
+          983 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          5 分钟
+          9 分钟
         
       </span>
     
@@ -271,44 +271,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">今日算法-18</h1>
+            <h1 id="seo-header">从信号量到分布式锁 ——并发的解决方法以及理解</h1>
             
             
               <div class="markdown-body">
                 
-                <p>关于一些必须记忆的函数</p>
-<p>charAt() ; 返回对应位置的字符；</p>
-<p>getOrDefault（）；V getOrDefault(Object key, V defaultValue)</p>
-<p>containsKey（）；是否包含这个键</p>
-<p>import java.util.Arrays;<br>import java.util.LinkedList;</p>
-<p>class Solution {<br>    public int[][] merge(int[][] intervals) {<br>        &#x2F;&#x2F; 使用链表来存储合并后的区间，方便动态地添加和删除元素<br>        LinkedList&lt;int[]&gt; res &#x3D; new LinkedList&lt;&gt;();<br>        &#x2F;&#x2F; 按照每个区间的起始值对区间数组进行升序排序<br>        Arrays.sort(intervals, (o1, o2) -&gt; Integer.compare(o1[0], o2[0]));</p>
-<pre><code class="hljs">// 先将第一个区间加入结果链表中
-    res.add(intervals[0]);
-
-// 从第二个区间开始遍历所有区间
-    for (int i = 1; i &lt; intervals.length; i++) &#123;
-        // 如果当前区间的起始值小于等于结果链表中最后一个区间的结束值，说明有重叠
-        if (intervals[i][0] &lt;= res.getLast()[1]) &#123;
-            // 取出结果链表中最后一个区间的起始值
-            int start = res.getLast()[0];
-            // 计算合并后的区间的结束值，取当前区间和结果链表中最后一个区间结束值的较大值
-            int end = Math.max(intervals[i][1], res.getLast()[1]);
-            // 将结果链表中最后一个区间删除
-            res.removeLast();
-            // 将合并后的新区间加入结果链表
-            res.add(new int[]&#123;start, end&#125;);
-        &#125; else &#123;
-            // 如果没有重叠，则直接将当前区间加入结果链表
-            res.add(intervals[i]);
-        &#125;
-    &#125;
-
-// 将链表转换为二维数组并返回
-    return res.toArray(new int[res.size()][]);
-&#125;
-</code></pre>
-<p>}</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testExport</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 创建表头列表，包含员工编号、姓名、性别、手机号、金额等字段名称</span><br>    List&lt;String&gt; heads = ListUtils.newArrayList(<span class="hljs-string">&quot;员工编号&quot;</span>, <span class="hljs-string">&quot;姓名&quot;</span>, <span class="hljs-string">&quot;性别&quot;</span>, <span class="hljs-string">&quot;手机号&quot;</span>, <span class="hljs-string">&quot;金额&quot;</span>);<br>    <span class="hljs-comment">// 用于存储所有数据的列表，首先添加表头</span><br>    List&lt;List&lt;String&gt;&gt; dataList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    dataList.add(heads);<br><br>    <span class="hljs-comment">// 通过循环生成模拟数据</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) &#123;<br>        i++;<br>        <span class="hljs-comment">// 每一行数据都是一个包含员工编号、姓名、性别、手机号和金额的列表</span><br>        dataList.add(ListUtils.newArrayList(String.valueOf(i), <span class="hljs-string">&quot;王&quot;</span>+i, i%<span class="hljs-number">2</span> == <span class="hljs-number">0</span>? <span class="hljs-string">&quot;男&quot;</span> : <span class="hljs-string">&quot;女&quot;</span>, <span class="hljs-string">&quot;1234456&quot;</span>, <span class="hljs-string">&quot;666.88&quot;</span>));<br>    &#125;<br><br>    <span class="hljs-comment">// 指定输出的 Excel 文件名称</span><br>    <span class="hljs-type">String</span> <span class="hljs-variable">fileName</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;export.xlsx&quot;</span>;<br>    <span class="hljs-comment">// 使用 EasyExcel 进行写入操作，指定文件名、工作表名称为&quot;员工&quot;，并将数据写入文件</span><br>    EasyExcel.write(fileName).sheet(<span class="hljs-string">&quot;员工&quot;</span>).doWrite(dataList);<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="从信号量到分布式锁-——并发的解决方法以及理解"><a href="#从信号量到分布式锁-——并发的解决方法以及理解" class="headerlink" title="从信号量到分布式锁 ——并发的解决方法以及理解"></a>从信号量到分布式锁 ——并发的解决方法以及理解</h1><p><strong>并发问题如何解决?</strong></p>
+<p>并发的本质是对有限资源的不对等抢占 。</p>
+<h2 id="操作系统底层"><a href="#操作系统底层" class="headerlink" title="操作系统底层"></a>操作系统底层</h2><p>我们从线程出发，因为线程是操作系统能够进行运算调度的最小单位  ，线程同步其中一种方法是信号量 ，信号量通常表示资源的数量 ，通过两个原子操作的系统调用函数来控制信号量 ，P、V操作， 进入减一 ，退出加一  ，等于0时阻塞 ，相当于互斥锁抢占了资源；当你明白了这个原理 ，就可以理解全部的并发解决方案 。</p>
+<h2 id="Java的解决方法"><a href="#Java的解决方法" class="headerlink" title="Java的解决方法"></a>Java的解决方法</h2><h3 id="单体服务上"><a href="#单体服务上" class="headerlink" title="单体服务上"></a>单体服务上</h3><p>首先 ，volatile关键字， 实现的是内存的可见性 ，相当于大家都可以看到的信号量 ，而synchronized ，在jdk1,7的实现中 ，与信号量的操作是一样 ，底层用的是操作系统的monitorenter 和monitorexit ，这是通过修饰代码块所采用的方法；修饰普通方法时 ， JVM 会通过 <code>ACC_SYNCHRONIZED</code> 标记符来实现同步 ， 你可以发现 ，他们是一样的 。如何不止一个线程，更多的资源需要同步一个资源 ，那么 ，标识依旧保留 ，把等待的资源串起来， 这个时候，就是一个经典的AQS ， AQS实现是由一个共享变量state和一个线程等待队列 ，更巧的是  ，state由volatile变量修饰 ，而AQS就是ReetrantLock的底层实现 。</p>
+<p>这个时候 ，你明白了线程资源的抢占 ，操作系统底层是由互斥锁和信号量 ，而到Java这里 ，有三个类似的 ，volatile ，实现的是内存的可见性 ，synchronized采用的是类似信号量的操作机制， 底层用的是操作系统的monitorenter 和monitorexit ，AQS ，是利用一个信号量加队列的方式实现 。</p>
+<p>单体的我们已经解决了。</p>
+<h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><p>而分布式时 ，会出现的问题是 ，没有一个类似volatile变量的东西，让变量对于所有的实例都是可见的 ，并且实时更新的 。</p>
+<p>这个时候 ，CAP理论，可以给我们指导 ，指的是在一个分布式系统中，Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性）这 3 个基本需求，最多只能同时满足其中的 2 个。</p>
+<p>简单而言 ，你不能同时要求提供的服务一直都是可用的，并且数据多副本完全一致 ，在遇到网络故障时 ，依旧保持一致性和可用性  。常见的分布式锁是 ，MySQL分布式锁 ，zookeeper分布式锁，Redis分布式锁 ；MySQL分手锁不常用 ，因为属于数据库IO操作 ，效率不高  ；zookeeper分布式锁保证的是CP ，redis分布式锁保证的是 AP。</p>
+<p>看下对比：</p>
+<p>Redis分布式锁：它追求的高可用性和分区容错性。Redis在追求高可用性时会在 Redis 写入主节点数据后，立即返回成功，不关心异步主节点同步从节点数据是否成功。Redis是基于内存的，性能极高，官方给的指标是每秒可达到10W的吞吐量。</p>
+<p>Zookeeper分布式锁：它追求的是强一致性和分区容错性。Zookeeper在写入主节点数据后会等到从节点同步完数据成后才会返回成功。为了数据的强一致性牺牲了一部分可用性。</p>
+<p>而在大部分的高并发场景下， 我们需要的都是可用性 ，redis分布式锁就是大部分锁采用的方案 。</p>
+<h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><p>在分布式SOA设计原则的基础上 ，发展出了微服务架构</p>
+<p>将单体的服务拆分成多个小型、自治且松耦合的服务 。</p>
+<p>微服务的两个重点关注点， 拆分服务以及服务治理 。</p>
 
                 
               </div>
@@ -321,7 +304,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
+        <a href="/tags/%E6%8A%80%E6%9C%AF%E7%90%86%E8%A7%A3/" class="print-no-link">#技术理解</a>
       
     </div>
   
@@ -333,8 +316,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>今日算法-18</div>
-      <div>http://example.com/2024/09/16/今日算法-18/</div>
+      <div>从信号量到分布式锁 ——并发的解决方法以及理解</div>
+      <div>http://example.com/2024/12/04/从信号量到分布式锁-——并发的解决方法以及理解/</div>
     </div>
     <div class="license-meta">
       
@@ -346,7 +329,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年9月16日</div>
+          <div>2024年12月4日</div>
         </div>
       
       
@@ -378,9 +361,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/04/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/" title="从信号量到分布式锁 ——并发的解决方法以及理解">
+                      <a href="/2025/05/04/JVM%E8%B0%83%E4%BC%98/" title="JVM调优">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">从信号量到分布式锁 ——并发的解决方法以及理解</span>
+                        <span class="hidden-mobile">JVM调优</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -388,8 +371,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/09/11/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-17/" title="今日算法-17">
-                        <span class="hidden-mobile">今日算法-17</span>
+                      <a href="/2024/09/16/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-18/" title="今日算法-18">
+                        <span class="hidden-mobile">今日算法-18</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
