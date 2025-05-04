@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2025/05/04/hello-world/"/>
+    <url>/2025/05/04/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><p>hexo g 生成博客<br>hexo d 部署到github</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-18</title>
+    <link href="/2024/09/16/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-18/"/>
+    <url>/2024/09/16/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-18/</url>
+    
+    <content type="html"><![CDATA[<p>关于一些必须记忆的函数</p><p>charAt() ; 返回对应位置的字符；</p><p>getOrDefault（）；V getOrDefault(Object key, V defaultValue)</p><p>containsKey（）；是否包含这个键</p><p>import java.util.Arrays;<br>import java.util.LinkedList;</p><p>class Solution {<br>    public int[][] merge(int[][] intervals) {<br>        &#x2F;&#x2F; 使用链表来存储合并后的区间，方便动态地添加和删除元素<br>        LinkedList&lt;int[]&gt; res &#x3D; new LinkedList&lt;&gt;();<br>        &#x2F;&#x2F; 按照每个区间的起始值对区间数组进行升序排序<br>        Arrays.sort(intervals, (o1, o2) -&gt; Integer.compare(o1[0], o2[0]));</p><pre><code class="hljs">// 先将第一个区间加入结果链表中    res.add(intervals[0]);// 从第二个区间开始遍历所有区间    for (int i = 1; i &lt; intervals.length; i++) &#123;        // 如果当前区间的起始值小于等于结果链表中最后一个区间的结束值，说明有重叠        if (intervals[i][0] &lt;= res.getLast()[1]) &#123;            // 取出结果链表中最后一个区间的起始值            int start = res.getLast()[0];            // 计算合并后的区间的结束值，取当前区间和结果链表中最后一个区间结束值的较大值            int end = Math.max(intervals[i][1], res.getLast()[1]);            // 将结果链表中最后一个区间删除            res.removeLast();            // 将合并后的新区间加入结果链表            res.add(new int[]&#123;start, end&#125;);        &#125; else &#123;            // 如果没有重叠，则直接将当前区间加入结果链表            res.add(intervals[i]);        &#125;    &#125;// 将链表转换为二维数组并返回    return res.toArray(new int[res.size()][]);&#125;</code></pre><p>}</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testExport</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 创建表头列表，包含员工编号、姓名、性别、手机号、金额等字段名称</span><br>    List&lt;String&gt; heads = ListUtils.newArrayList(<span class="hljs-string">&quot;员工编号&quot;</span>, <span class="hljs-string">&quot;姓名&quot;</span>, <span class="hljs-string">&quot;性别&quot;</span>, <span class="hljs-string">&quot;手机号&quot;</span>, <span class="hljs-string">&quot;金额&quot;</span>);<br>    <span class="hljs-comment">// 用于存储所有数据的列表，首先添加表头</span><br>    List&lt;List&lt;String&gt;&gt; dataList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    dataList.add(heads);<br><br>    <span class="hljs-comment">// 通过循环生成模拟数据</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) &#123;<br>        i++;<br>        <span class="hljs-comment">// 每一行数据都是一个包含员工编号、姓名、性别、手机号和金额的列表</span><br>        dataList.add(ListUtils.newArrayList(String.valueOf(i), <span class="hljs-string">&quot;王&quot;</span>+i, i%<span class="hljs-number">2</span> == <span class="hljs-number">0</span>? <span class="hljs-string">&quot;男&quot;</span> : <span class="hljs-string">&quot;女&quot;</span>, <span class="hljs-string">&quot;1234456&quot;</span>, <span class="hljs-string">&quot;666.88&quot;</span>));<br>    &#125;<br><br>    <span class="hljs-comment">// 指定输出的 Excel 文件名称</span><br>    <span class="hljs-type">String</span> <span class="hljs-variable">fileName</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;export.xlsx&quot;</span>;<br>    <span class="hljs-comment">// 使用 EasyExcel 进行写入操作，指定文件名、工作表名称为&quot;员工&quot;，并将数据写入文件</span><br>    EasyExcel.write(fileName).sheet(<span class="hljs-string">&quot;员工&quot;</span>).doWrite(dataList);<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-17</title>
+    <link href="/2024/09/11/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-17/"/>
+    <url>/2024/09/11/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-17/</url>
+    
+    <content type="html"><![CDATA[<p>滑动窗口</p><p>长度最小的子数组</p><p>这是关于双指针的问题；思路是没有问题的，但是跑不完用例。</p><p>记录result的应该初始化为Integer.MAX_VALUE; 因为极端情况也是我们需要考虑的。</p><p>同时明白移动指针的时间的顺序，精确到各个数据的细节，思维要严谨。</p><p>回溯法，注意模板</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">void backtracking(参数) &#123;<br>    if (终止条件) &#123;<br>        存放结果;<br>        return;<br>    &#125;<br><br>    for (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) &#123;<br>        处理节点;<br>        backtracking(路径，选择列表); // 递归<br>        回溯，撤销处理结果<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>有进就有退，不要忘记退了。有进有退才叫做回溯。标记数组，结果数组存储的采用ArrayList，可以动态扩容；暂时的存储的采用LinkedList，适合频繁的增删；</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-16</title>
+    <link href="/2024/09/06/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-16/"/>
+    <url>/2024/09/06/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-16/</url>
+    
+    <content type="html"><![CDATA[<h2 id="快速排序："><a href="#快速排序：" class="headerlink" title="快速排序："></a>快速排序：</h2><p>基于分治思想</p><p>先分区，确立分区逻辑</p><h2 id="无重复字符-的最长子串"><a href="#无重复字符-的最长子串" class="headerlink" title="无重复字符 的最长子串"></a>无重复字符 的最长子串</h2><p>利用哈希和滑动窗口；</p><p>滑动窗口更新边界</p><p>哈希记录字符出现的位置</p><h2 id="LRU缓存机制"><a href="#LRU缓存机制" class="headerlink" title="LRU缓存机制"></a>LRU缓存机制</h2><p>利用双向循环列表，模拟LRU的过程，哈希</p><p>put 和get都是以O(1)的时间复杂度，双向循环链表可以满足条件</p><p>初始化容量</p><p>写函数get </p><p>写函数put</p><p>利用java自带的LinkedHashMap通过双向链表维护元素的顺序，其中， remove 和put 操作，</p><p>访问时，先remove。再put ，就可以更新或者添加到末尾</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-15</title>
+    <link href="/2024/07/31/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-15/"/>
+    <url>/2024/07/31/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-15/</url>
+    
+    <content type="html"><![CDATA[<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="不同的子序列"><a href="#不同的子序列" class="headerlink" title="不同的子序列"></a>不同的子序列</h2>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-9</title>
+    <link href="/2024/07/30/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-9-1/"/>
+    <url>/2024/07/30/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-9-1/</url>
+    
+    <content type="html"><![CDATA[<p>说明快捷键： ctrl +  q</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-14</title>
+    <link href="/2024/07/28/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-14/"/>
+    <url>/2024/07/28/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-14/</url>
+    
+    <content type="html"><![CDATA[<p>动态规划</p><p>不相交的线</p><p>最大子序列和</p><p>判断子序列</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-13</title>
+    <link href="/2024/07/27/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-13/"/>
+    <url>/2024/07/27/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-13/</url>
+    
+    <content type="html"><![CDATA[<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><h3 id="最长上升子序列"><a href="#最长上升子序列" class="headerlink" title="最长上升子序列"></a>最长上升子序列</h3><h4 id="关于初始化"><a href="#关于初始化" class="headerlink" title="关于初始化"></a>关于初始化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Arrays.fill(dp, <span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure><p>详细解释：</p><ul><li><code>Arrays.fill(array, value)</code>：将 <code>array</code> 数组的所有元素都设置为 <code>value</code>。</li><li><code>dp</code>：是你要填充的数组。</li><li><code>1</code>：是你要填充到数组每个元素的值。</li></ul><p>关于思想</p><h3 id="最长连续递增子序列"><a href="#最长连续递增子序列" class="headerlink" title="最长连续递增子序列"></a>最长连续递增子序列</h3><p>简化成一维遍历，然后对比的是上一个即可。</p><h3 id="最长重复子数组"><a href="#最长重复子数组" class="headerlink" title="最长重复子数组"></a>最长重复子数组</h3><p>逐个对比</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure><h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><p>知识点：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Java">charchar1 = text1.charAt(i-<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure><p><code>char char1 = text1.charAt(i-1);</code> 是 Java 中用于从字符串 <code>text1</code> 中获取指定位置的字符的一种方式。具体来说，这行代码从 <code>text1</code> 字符串中获取第 <code>i-1</code> 个位置上的字符，并将其赋值给变量 <code>char1</code>。</p><p>详细解释如下：</p><ul><li><code>char char1</code>：声明一个 <code>char</code> 类型的变量 <code>char1</code>。</li><li><code>text1</code>：是一个字符串对象。</li><li><code>charAt(i-1)</code>：是 <code>String</code> 类中的一个方法，用于返回字符串中指定索引处的字符。索引从 <code>0</code> 开始计数，因此 <code>charAt(i-1)</code> 表示获取字符串 <code>text1</code> 中第 <code>i-1</code> 个位置的字符。</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-9</title>
+    <link href="/2024/07/23/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-9/"/>
+    <url>/2024/07/23/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-9/</url>
+    
+    <content type="html"><![CDATA[<p>关于redis操作部分的数据类型转化问题</p><p>putAll（）函数的调用，在没有将数据类型转化成String，导致出错</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">Map&lt;String , Object&gt; userMap = BeanUtil.beanToMap(userDTO);<br>Map&lt;String, Object&gt; userMap = BeanUtil.beanToMap(userDTO, <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String, Object&gt;(), create().setIgnoreNullValue(<span class="hljs-literal">true</span>).setFieldValueEditor((fieldName, fieldValue) -&gt; fieldValue.toString()));<br></code></pre></td></tr></table></figure><p>对比一二行，第二行 使用了FiledValueEditor，将每个字段的值都转化为String类型</p><p> <strong><code>BeanUtil.beanToMap(userDTO, new HashMap&lt;String, Object&gt;(), create().setIgnoreNullValue(true).setFieldValueEditor((fieldName, fieldValue) -&gt; fieldValue.toString()))</code></strong> :</p><ul><li>这个方法使用了一个 <code>FieldValueEditor</code>，它将每个字段的值都转换为 <code>String</code> 类型。<code>fieldValue.toString()</code> 的调用确保了无论字段的原始类型是什么，最终都将以 <code>String</code> 类型存储在 <code>Map</code> 中。</li><li>这样，当你将这个 <code>Map</code> 存储到 Redis 时，所有的值都已经是 <code>String</code> 类型，避免了 <code>ClassCastException</code> 的问题</li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><strong>类型转换</strong> : 使用 <code>FieldValueEditor</code> 将所有字段值转换为 <code>String</code> 类型，确保了你在存储和序列化数据时不会出现类型不匹配的问题。</li><li><strong>数据一致性</strong> : 这样做确保了在 Redis 存储和检索数据时，一致地处理所有数据为 <code>String</code> 类型，符合 <code>StringRedisSerializer</code> 的要求。</li></ul><p> <strong>改进建议</strong> :</p><ul><li>如果你在不同的地方需要不同的数据类型（如 <code>Long</code> 和 <code>String</code>），考虑使用适当的序列化器或者在应用层处理数据类型转换。</li><li>确保所有操作 Redis 的地方数据类型一致，可以有效减少类似的问题。</li></ul><p>你现在的解决方案是通过强制将所有字段值转换为 <code>String</code>，这在处理 Redis 数据时是一种有效的方式。</p><p>拦截器优化</p><p>两个拦截器</p><p>第一个刷新</p><p>第二个拦截需登录new</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-12</title>
+    <link href="/2024/07/23/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-12/"/>
+    <url>/2024/07/23/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-12/</url>
+    
+    <content type="html"><![CDATA[<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="股票问题"><a href="#股票问题" class="headerlink" title="股票问题"></a>股票问题</h2><h3 id="最佳买卖股票时机含冷冻期"><a href="#最佳买卖股票时机含冷冻期" class="headerlink" title="最佳买卖股票时机含冷冻期"></a>最佳买卖股票时机含冷冻期</h3><p>状态较为复杂，定义四种状态的dp数组，初始化时根据公式判断；</p><p>分解为 ： 持股 ； 不持有股票（保持卖出状态 ， 今天卖出） ；冷冻状态</p><h3 id="买卖股票的最佳时间含手续费"><a href="#买卖股票的最佳时间含手续费" class="headerlink" title="买卖股票的最佳时间含手续费"></a>买卖股票的最佳时间含手续费</h3><p>这是关于买卖II的变形，只要在卖出&#x2F;买入时考虑手续费即可，其余相同</p><h3 id="股票问题总结"><a href="#股票问题总结" class="headerlink" title="股票问题总结"></a>股票问题总结</h3><p>最关键的是如何分解股票的各个状态；如何用dp数组去定义，然后根据定义推出递推公式，再初始化，尤其要关注定义不能混淆。要清晰分解可能的状态。而递推公式；考虑的其实都是如何从前一个状态到后一个状态，就像爬楼梯一样；无非是决定走哪一步，走不走的问题。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>每日八股-6</title>
+    <link href="/2024/07/21/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-6/"/>
+    <url>/2024/07/21/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-6/</url>
+    
+    <content type="html"><![CDATA[<p>BigDecimal避免精度丢失</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>八股</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-11</title>
+    <link href="/2024/07/20/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-11/"/>
+    <url>/2024/07/20/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-11/</url>
+    
+    <content type="html"><![CDATA[<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="买股票的最佳时机II"><a href="#买股票的最佳时机II" class="headerlink" title="买股票的最佳时机II"></a>买股票的最佳时机II</h2><p>思考：</p><p>递归性：</p><ul><li>dp[i][0] 表示第i天持有股票所得现金。</li><li>dp[i][1] 表示第i天不持有股票所得最多现金</li></ul><p>第i天持有股票即dp[i][0]，如果是第i天买入股票，所得现金就是昨天不持有股票的所得现金 减去 今天的股票价格 即：dp[i - 1][1] - prices[i]</p><p>如果第i天不持有股票即dp[i][1]的情况， 依然可以由两个状态推出来</p><ul><li>第i-1天就不持有股票，那么就保持现状，所得现金就是昨天不持有股票的所得现金 即：dp[i - 1][1]</li><li>第i天卖出股票，所得现金就是按照今天股票价格卖出后所得现金即：prices[i] + dp[i - 1][0]</li></ul><p>还需加深理解数组含义</p><h2 id="买股票III"><a href="#买股票III" class="headerlink" title="买股票III"></a>买股票III</h2><p>两笔交易，但是不可同时进行</p><p>定义</p><p>初始化</p><p>递推公式</p><p>其实再复杂的问题，都可以回归到爬楼梯问题上，我是如何到这个楼梯的，一开始我又在哪里，我该如何爬楼梯；最终会到哪里</p><p>这个题目的细节处理很关键，弄明白各个阶段的dp数组的定义，</p><h2 id="IV"><a href="#IV" class="headerlink" title="IV"></a>IV</h2><p>k笔交易</p><p>范围扩到dp[i] [2k]</p><p>初始化与3类似，奇数和偶数分开</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-10</title>
+    <link href="/2024/07/19/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-10/"/>
+    <url>/2024/07/19/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-10/</url>
+    
+    <content type="html"><![CDATA[<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="打家劫舍"><a href="#打家劫舍" class="headerlink" title="打家劫舍|||"></a>打家劫舍|||</h2><p>结合二叉树</p><p>后序遍历，每次只取最大的子树，判断是否偷根节点。</p><p>递归</p><p>树形DP，如何把树转化成数组，将陌生转化为熟悉，结合前面已经知道的二叉树遍历。</p><h2 id="买股票的最佳时机"><a href="#买股票的最佳时机" class="headerlink" title="买股票的最佳时机"></a>买股票的最佳时机</h2>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>每日八股-5</title>
+    <link href="/2024/07/18/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-5/"/>
+    <url>/2024/07/18/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-5/</url>
+    
+    <content type="html"><![CDATA[<p>java基础：</p><h2 id="java-SE-和-java-EE"><a href="#java-SE-和-java-EE" class="headerlink" title="java SE 和 java EE"></a>java SE 和 java EE</h2><p>SE 基础版，桌面和简单应用程序</p><p>  EE高级版本，复杂应用和企业应用程序</p><p>java ME 微型版本， 嵌入式消费电子设备的应用程序</p><h2 id="JVM-，JDK-，-JRE"><a href="#JVM-，JDK-，-JRE" class="headerlink" title="JVM ，JDK ， JRE"></a>JVM ，JDK ， JRE</h2><p>JVM java虚拟机 运行java 字节码的 虚拟机</p><p>一次编译，随处可以运行</p><p>JDK 和 JRE</p><p>JDK 功能齐全的java SDK ，包含了JRE</p><h2 id="字节码的好处"><a href="#字节码的好处" class="headerlink" title="字节码的好处"></a>字节码的好处</h2><p>JVM可以理解的代码叫做字节码，不面向任何特定处理器，只面向虚拟机。字节码经过解释器（非热点代码）&amp;编译器（JIT）<strong>JIT（Just in Time Compilation）（热点代码处理）</strong>的处理就可以变成机器可以理解的代码</p><h2 id="java-语言-编译和解释并存"><a href="#java-语言-编译和解释并存" class="headerlink" title="java 语言 编译和解释并存"></a>java 语言 编译和解释并存</h2><p>java编译生成字节码，字节码解释生成机器码</p><h2 id="AOT"><a href="#AOT" class="headerlink" title="AOT"></a>AOT</h2><p><strong>AOT(Ahead of Time Compilation)   编译模式</strong></p><p>与JIT不同，执行前编译成机器码， 属于静态编译</p><p>避免了JIT预热， 提高启动速度，避免预热时间长</p><p>减少内存占用和增强java 程序的安全性（不容易被反编译和修改）适合云原生场景（云原生，一类技术统称，易于构建弹性扩展的应用程序）</p><p>AOT 启动时间，内存占用和打包体积占优势 ； JIT 具备极高的极限处理能力，可以降低请求的最大延迟。说白了</p><p>GraalVM ，高性能JDK ， 能运行Java和其他JVM语言 ， 以及JavaScript和python等非jvm语言</p><p>AOT编译和JIT编译均可</p><h2 id="AOT和JIT优缺点"><a href="#AOT和JIT优缺点" class="headerlink" title="AOT和JIT优缺点"></a>AOT和JIT优缺点</h2><p>AOT适用于云原生，以及微服务架构</p><p>不支持Java的部分动态特性 如反射， 动态代理，动态加载 ， JNI（ Java Native Interface） Java本地接口方法，允许Java调用本地代码，部分架构和库需要用到这些特性而用AOT编译，则无法使用。</p><p>AOT提前编译</p><p>JIT即时编译器</p><h2 id="云原生"><a href="#云原生" class="headerlink" title="云原生"></a>云原生</h2><p>云原生：开发，部署， 管理相对于传统的应用程序更加的高效和便捷；提高开发效率，说白了，就是一个平台，大家把东西放上面，更容易一起构建，部署，管理。微服务化架构</p><h2 id="OracleJDK和openJDK"><a href="#OracleJDK和openJDK" class="headerlink" title="OracleJDK和openJDK"></a>OracleJDK和openJDK</h2><p>扩展; BCL协议 :使用JDK（可商用），不可修改</p><p>OTN协议：私下用，商用需付费</p><h2 id="Java和C-的区别"><a href="#Java和C-的区别" class="headerlink" title="Java和C++的区别"></a>Java和C++的区别</h2><p>都面向对象的语言， 支持封装，继承和多态， Java三大特性：继承，封装，多态</p><p>不同：</p><p>Java不提供指针直接来直接访问内存，程序内存更加安全</p><p>Java类单继承， C++多重继承；但是Java接口可多继承；多继承：一个接口可以继承多个类，一个类可以实现多个接口 </p><p>意义：多个父类有重复方法和属性时，子类的调用结果会不清；而用接口，可以小范围调用</p><p>Java自动内存管理垃圾回收机制（GC） ， 无需手动释放内存</p><p>C++方法重载和操作符重载，但Java仅方法重载； 操作符重载增加了复杂性</p><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>注释</p><p>标识符</p><p>关键字（赋予特殊含义的标识符）</p><p>自增自减运算符</p><p>移位运算符（常常不会用）</p><p>&lt;&lt;:左移位运算符；高丢低补； x&lt;&lt; n ; 相当于x乘2的n次方</p><p><code>&gt;</code>&gt;:带符号右移，向右移若干位，高位补符号位，低位丢弃。正数高位补 0,负数高位补 1。<code>x &gt;&gt; n</code>,相当于 x 除以 2 的 n 次方</p><h2 id="continue-break-return"><a href="#continue-break-return" class="headerlink" title="continue , break  , return"></a>continue , break  , return</h2><ol><li><code>continue</code>：指跳出当前的这一次循环，继续下一次循环。</li><li><code>break</code>：指跳出整个循环体，继续执行循环下面的语句。</li></ol><p><code>return</code> 用于跳出所在方法，结束该方法的运行。return 一般有两种用法：</p><ol><li><code>return;</code>：直接使用 return 结束方法执行，用于没有返回值函数的方法</li><li><code>return value;</code>：return 一个特定值，用于有返回值函数的方法</li></ol><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>Java 中有 8 种基本数据类型，分别为：</p><ul><li>6 种数字类型：<ul><li>4 种整数型：<code>byte</code>、<code>short</code>、<code>int</code>、<code>long</code></li><li>2 种浮点型：<code>float</code>、<code>double</code></li></ul></li><li>1 种字符类型：<code>char</code></li><li>1 种布尔型：<code>boolean</code>。</li></ul><p>这八种基本类型都有对应的包装类分别为：<code>Byte</code>、<code>Short</code>、<code>Integer</code>、<code>Long</code>、<code>Float</code>、<code>Double</code>、<code>Character</code>、<code>Boolean</code></p><h2 id="包装类型相关"><a href="#包装类型相关" class="headerlink" title="包装类型相关"></a>包装类型相关</h2><p>包装类型的缓存机制</p><p>整型包装类型对象之间值的比较，用equals方法比较</p><p>自动装箱与拆箱：</p><p>包装的意义：Java面向对象，基本 类型没有对象的性质，包装后，包装类型有了对象的性质，可以添加属性和方法，丰富了基本类型的操作</p><h2 id="重写和重载的区别"><a href="#重写和重载的区别" class="headerlink" title="重写和重载的区别"></a>重写和重载的区别</h2><p>重载：同样的一个方法能够根据输入数据的不同，做出不同的处理</p><p>同一个类中，方法名必须相同，参数类型、个数、顺序不同；方法返回值和访问修饰符可以不同</p><p>重载就是同一个类中多个同名方法根据不同的传参来执行不同的逻辑处理</p><p>重写：当子类继承自父类的相同方法，输入数据一样，但要做出有别于父类的响应时，你就要覆盖父类的方法</p><p>运行期间，子类对父类的允许访问的方法的实现过程进行重新编写。</p><p>重写就是子类对父类方法的重新改造，外部样子不能改变，内部逻辑可以改变</p><p><img src="/image/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-5/1721457064512.png" alt="1721457064512"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>八股</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>每日八股-4</title>
+    <link href="/2024/07/17/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-4/"/>
+    <url>/2024/07/17/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-4/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-8</title>
+    <link href="/2024/07/17/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-8/"/>
+    <url>/2024/07/17/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="关于如何排查错误"><a href="#关于如何排查错误" class="headerlink" title="关于如何排查错误"></a>关于如何排查错误</h2><p>刨根问底，递归性的看，看后面的错误，要找到背后最根本的原因，而不是一直卡在第一个报错的地方，只有递归性的理解了各个日志的含义，或者说知道报错从哪个地方找，以后才能自己独立的解决问题。</p><p>接着推进项目的进程</p><p>这次报错，主要是redis配置和mysql配置不当；redis设置了密码，但是没有在conf文件里面设置密码；没有正确配置；mysql没有正确配置用户名，仅仅是配置了密码，相当于有了钥匙但是没有找到相对应的门。</p><p>总结与反思：学会如何分解问题，多问几个为什么，多学多问多思考，自己也可以多多尝试，排除法，而不是一直走老路，一直犯同样的错误。只有不断纠正学习，才能更好的进步。</p><h2 id="关于如何深入学习"><a href="#关于如何深入学习" class="headerlink" title="关于如何深入学习"></a>关于如何深入学习</h2><p>从业务逻辑出发，思考项目所运用的技术点，然后想明白为什么要用这个方案，有没有别的方案，别的方案的优劣之处又在哪里？发散性的思考，又深入性的思考，做到既有深度，又有广度。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-7</title>
+    <link href="/2024/07/13/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-7/"/>
+    <url>/2024/07/13/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-7/</url>
+    
+    <content type="html"><![CDATA[<p>redis报错，显示已经连接成功，但是一输验证码就报错</p><p>排查后代码没有问题；找不到原因；死耗着没有效果</p><p>note：以后如果是某个软件或者配置出了问题，一定时间内找不到，直接重装；不要一直卡在那里</p><p>理论与实践还是有差距的，多动手自己去敲一下代码，运行不报错才行；而不是看看就行了</p><p>装虚拟机，配ubunt</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-9</title>
+    <link href="/2024/07/13/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-9/"/>
+    <url>/2024/07/13/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-9/</url>
+    
+    <content type="html"><![CDATA[<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="单词拆分"><a href="#单词拆分" class="headerlink" title="单词拆分"></a>单词拆分</h2><p>反向；用字典装满字符串</p><p>dp数组的含义：字符串的长度为i，dp[i] true</p><p>dp[0]空字符串</p><p>dp[s.size]</p><p>if([j, i ) , &amp;&amp; dp[i]){</p><p>   true</p><p>}</p><p>dp[0]&#x3D; true</p><p>组合数和排列数</p><p>排列数，有顺序；先包</p><p>for(i&#x3D;1 ; i&lt; &#x3D; s. size ; i++){<br>    for(j&lt;0 , j&lt; i ; j++){</p><pre><code class="hljs">截取后是否在字典里；</code></pre><p> true；</p><p>}</p><p>打印</p><p>}</p><p>知识点：截取字符串：s.substring(j , i)</p><p>判读包含：set.contains( );</p><p>多重背包</p><h2 id="打家劫舍"><a href="#打家劫舍" class="headerlink" title="打家劫舍"></a>打家劫舍</h2><h2 id="打家劫舍II"><a href="#打家劫舍II" class="headerlink" title="打家劫舍II"></a>打家劫舍II</h2><p>有环路，可以断开，分成两份，然后判断最大值；只是nums[]的取值单位不一样；一份是不取第一个，一份是不取最后一个。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>每日八股-3</title>
+    <link href="/2024/07/13/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-3/"/>
+    <url>/2024/07/13/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-3/</url>
+    
+    <content type="html"><![CDATA[<p>物理内存的结构</p><h2 id="一致性访问内存UMA架构"><a href="#一致性访问内存UMA架构" class="headerlink" title="一致性访问内存UMA架构"></a>一致性访问内存UMA架构</h2><p>传输均经过总线</p><p>扩宽总线成本高，面临性能和扩展性问题</p><h2 id="非一致性内存访问NUMA架构"><a href="#非一致性内存访问NUMA架构" class="headerlink" title="非一致性内存访问NUMA架构"></a>非一致性内存访问NUMA架构</h2><p>非整块</p><p>CPU访问本地内存较快，但是访问其他节点就会慢很多，导致速度不一致，所以叫做非一致性内存访问架构</p><p>内存分配策略</p><p>note：需要明白的是，工程需要和课堂上的教学是不一样的，基于业务逻辑和具体需要去理解各个点，这东西解决了什么问题，带着问题出发，从问题去思考，然后想着，如何运用在开发中，无论是运用这个技术，还是学习它的设计思想，都对思维体系和开发能力有益。而不是仅仅知道个概念，不明白其由来和作用，那大脑只能是个比较好的存储器。发现问题，这个东西基于什么思想提出，解决方案明白之后，再去理解它底层所运用的东西，相应的数据结构，算法；从下到上，再从上到下；深刻的分析问题，再解决问题。</p><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><p>核心思考点：管理和分配</p><p>注意学习Linux</p><h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><p>哲学家问题：解决 了互斥访问有限的竞争问题一类的建模过程</p><p>读者问题：数据库访问建模</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>八股</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>每日八股-3</title>
+    <link href="/2024/07/12/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-2/"/>
+    <url>/2024/07/12/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1-2/</url>
+    
+    <content type="html"><![CDATA[<p>6.linux虚拟内存管理</p><p>7.Linux物理内存管理</p><p>连续和非连续</p><p>FLATMEM 和DISCONTIGMEM</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>八股</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-8</title>
+    <link href="/2024/07/12/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-8/"/>
+    <url>/2024/07/12/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="322零钱兑换"><a href="#322零钱兑换" class="headerlink" title="322零钱兑换"></a>322零钱兑换</h2><p>零钱无数</p><p>兑换零钱总数 背包</p><p>组合数</p><p>dp[j]装满容量为j，最少物品dp[j]</p><p>递推公式  ：  dp[j] &#x3D;min( dp[j-coins[i]]+1 ,dp[j]);</p><p>初始化：min;应该初始化为最大值 dp[0] &#x3D; 0;</p><p>先物品后背包（组合）</p><p>先背包后物品（排列）背包内元素的次序</p><p>不影响，因为是最小</p><p>for(int i &#x3D; 0 ; i&lt; coins.length; i++){</p><pre><code class="hljs">for(j=coins[i] ; j&lt;=amount ;j++)&#123;</code></pre><p>}</p><p>}</p><p>不断分解</p><h2 id="279-完全平方数"><a href="#279-完全平方数" class="headerlink" title="279.完全平方数"></a>279.完全平方数</h2><p>与上一题类似</p><p>dp[j] &#x3D; min(dp[j] , dp[j-i*i] +1)</p><p>i&#x3D; 1 ；i*i &lt; &#x3D; n; </p><p>j&#x3D;i*i；j&lt;&#x3D;n;</p><p>注意顺序</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-6</title>
+    <link href="/2024/07/12/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-6/"/>
+    <url>/2024/07/12/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-6/</url>
+    
+    <content type="html"><![CDATA[<p>redis短信登录功能</p><p>只要用户一直访问，不断更新有效期</p><p>redis的token有效期</p><p>实现：拦截器</p><p>关于注入技巧</p><p>基于public 下写时，注意注入别的类，才可以访问</p><p>spring 创建的对象可以自动注入；自己new的函数往往是无法利用spring实现依赖注入的，自带的才可以，用到的时候再去手动注入</p><p>关于这个问题，不需要手动注入， 可以找到用到它的类；且该类是由spring自动注入的；其实就是把自己创建的和spring自动的相互关联起来，避免手动注入的繁琐和复杂性、</p><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs aspectj"><span class="hljs-meta">@Configuration</span><br></code></pre></td></tr></table></figure><p>说明将来由spring创建</p><p>然后利用@Resource获取手动创建的与之关联</p><p>Alt + insert 调出generate 选择 constructor，自动构造函数；</p><h2 id="注意使用各种快捷键以及自带的方法提升开发效率-，这是我们需要了解的。"><a href="#注意使用各种快捷键以及自带的方法提升开发效率-，这是我们需要了解的。" class="headerlink" title="注意使用各种快捷键以及自带的方法提升开发效率 ，这是我们需要了解的。"></a>注意使用各种快捷键以及自带的方法提升开发效率 ，这是我们需要了解的。</h2><p>IDEA如何打开recent files快捷键  Ctrl + e  </p><p>Ctrl + e</p><p>IntelliJ IDEA中，** Ctrl + e** 是一组非常便捷的快捷键，用以快速查找和打开最近使用过的文件，如图 另，在 File -&gt; Setting -&gt; Editor -&gt; General 下可以设置 Ctrl + e 弹出层显示的记录文件个数，如图 </p><p>关于@Resource 注解 </p><p>和@Autowired 用法类似； 从容器中自动获取bean</p><p><a href="https://blog.csdn.net/u010502101/article/details/78950045">@Resource注解用法_@resource使用-CSDN博客</a></p><p>Ctrl + B 跳转到引用类</p><h3 id="关于IDEA代码自动补全"><a href="#关于IDEA代码自动补全" class="headerlink" title="关于IDEA代码自动补全"></a>关于IDEA代码自动补全</h3><p> .var自动补全</p><p>关于redis函数的调用，当有map时，说明不是一个值，而是返回key关联的全部值</p><p>设置redis数据自动过期时间</p><p>expire（）函数</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-5</title>
+    <link href="/2024/07/11/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-5/"/>
+    <url>/2024/07/11/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-5/</url>
+    
+    <content type="html"><![CDATA[<pre><code class="hljs">基于redis实现短信登录</code></pre><p>替代session</p><p>putAll方案</p><p>存东西时，最好加上一个前缀，表示业务逻辑</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-7</title>
+    <link href="/2024/07/11/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-7/"/>
+    <url>/2024/07/11/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-7/</url>
+    
+    <content type="html"><![CDATA[<p>动态规划总结</p><p>01背包问题</p><p>每个物品的数量只有一个，选或者不选，01背包</p><p>max(dp[j], dp[j - weight[i]] + value[i])根据一个的重量和价值一起判断，是否要取这个物品。</p><p>动规的五部曲：</p><ol><li>确定dp数组（dp table）以及下标的含义</li><li>确定递推公式</li><li>dp数组如何初始化</li><li>确定遍历顺序</li><li>举例推导dp数组</li></ol><p>其实只要把各个问题的东西抽象成背包，物品 ， 价值，容量，自己确定了推导公式，根据题目的提示初始化dp[i],再举例手动画一个遍历的过程，问题就变得简单了。</p><p>完全背包问题</p><p>1物多次</p><p>for背包改成正序；倒序的时候，只添加了一次</p><p>正序遍历状态图</p><p>顺序：物品和背包可换，上层每次遍历一个 ，下层每次就遍历一轮；每次是写一行还是写一列 </p><p>518.零钱兑换||</p><p>求组合数，外层为物品，内层为背包</p><p>求排列数，外层为背包，内层为物品</p><p>377.组合总和IV</p><p>排列</p><p>先背包后物品，举例子证明</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>每日八股</title>
+    <link href="/2024/07/11/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1/"/>
+    <url>/2024/07/11/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1/</url>
+    
+    <content type="html"><![CDATA[<p>操作系统</p><p>4.在4G的物理内存的机器上申请8G的内存会如何？、</p><p>操作系统虚拟内存大小</p><p>和操作系统的位数大小有关</p><p>32位操作系统，进程理论上只能申请最大为3GB的虚拟内存；直接申请8G，失败；64位，最大可以申请128TB；（）</p><ul><li>2^32 &#x3D; 4,294,967,296 个地址。</li><li>每个地址代表一个字节（Byte），所以地址空间大小就是 4,294,967,296 字节，即 4GB</li></ul><p>申请，不一定用上</p><p>swap机制的作用</p><p>无swap分区，会导致OOM（内存溢出）</p><p>note：学会利用Linux模拟，会有更好的效果</p><p>5.如何避免预读失效和缓存污染问题</p><p>预读机制：提前装入，减少磁盘I&#x2F;O次数，提高I&#x2F;O吞吐量</p><p>预读失效：提前加载的没读上</p><p>解决：预读页停留时间尽可能短；保证真正被读取的热数据保留在内存的时间尽可能长</p><p>改进LRU链表</p><p>缓存污染问题：</p><p>活跃LRU链表和非活跃LRU链表；</p><p>批量读时，大量数据进入活跃LRU链表，而热点数据被淘汰，且进入的数据很长一段时间都没有被访问</p><p>解决：提高进入活跃LRU链表的门槛；保证热点数据不会轻易被替换</p><p>6.深入理解Linux虚拟机内存管理</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>八股</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-4</title>
+    <link href="/2024/07/10/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-4/"/>
+    <url>/2024/07/10/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-4/</url>
+    
+    <content type="html"><![CDATA[<p>关于保存用户登录状态信息：</p><p>ThreadLocal ； 作用：java中的一个类，提供线程局部变量，每个访问变量的线程都有其自己独立初始化的变量副本；ThreadLocal实例，隔离的保存各个线程的数据，确保线程之间不会相互干扰，避免因为并发访问导致的数据不一致性问题</p><p>如何正确的启动项目</p><p>ngnix</p><p>redis</p><p>mysql</p><p><a href="http://localhost:8080/login.html">黑马点评</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-6</title>
+    <link href="/2024/07/10/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-6/"/>
+    <url>/2024/07/10/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-6/</url>
+    
+    <content type="html"><![CDATA[<p>动态规划</p><p>1.目标和</p><p>问题转化：01背包问题</p><p>加法总和：x；减法总和sum-x</p><p>要求：x-（sum-x） &#x3D; target</p><p>x &#x3D; （target+ sum）&#x2F;2</p><p>装满容量为x的背包，有几种方法</p><p>x；就是bagSize；</p><p>2.一和零</p><p>五部曲；</p><p>背包有两个维度，m, n ；不同长度的字符串就是不同大小的物品</p><p>dp[i][j]最多有i个0和j个1的strs的最大子集的大小为dp[i][j]</p><p>之后计算1，0合；再外层遍历物品，内层遍历背包，倒序；注意类型转化以及代码结构</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>八股-1</title>
+    <link href="/2024/07/10/%E5%85%AB%E8%82%A1-1/"/>
+    <url>/2024/07/10/%E5%85%AB%E8%82%A1-1/</url>
+    
+    <content type="html"><![CDATA[<p>操作系统：</p><p>内存管理：</p><p>1.为什么要有虚拟内存？</p><p>分页（多级页表，TLB）、分段、段页式内存管理，Linux内存管理</p><p>2.malloc是如何分配内存的？</p><p>非系统调用，函数，动态分配内存</p><p>brk（）；</p><p>mmap（）；</p><p>malloc 通过brk（）申请，free释放时，内存不还操作系统，缓存在mallco池；</p><p>通过mmap（）申请 ，free释放，会把内存归还给操作系统。真正释放</p><p>3.内存满了之后</p><p>后台内存回收，kswaped内核线程</p><p>直接内存回收，</p><p>OOM机制</p><p>SMP架构</p><p>NUMA架构</p><p>保护，不被OOM杀掉：调正进程值：&#x2F;proc&#x2F;[pid]&#x2F;oom_socre_adj值，改变打分</p><p>计算机网络</p><p>Http</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>八股</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-3</title>
+    <link href="/2024/07/09/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-3/"/>
+    <url>/2024/07/09/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-3/</url>
+    
+    <content type="html"><![CDATA[<p>项目点：</p><p>1.session集群问题 ； 无法共享会话状态；分了</p><p>解决；redis缓存：可以实现数据共享，提速； 性能提升</p><p>2.设置缓存</p><p>如何设计</p><p>解决缓存存在的问题</p><p>经典双写不一致</p><p>三大缓存问题</p><p>明天多看一点，加油</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法 -5</title>
+    <link href="/2024/07/09/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-5/"/>
+    <url>/2024/07/09/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-5/</url>
+    
+    <content type="html"><![CDATA[<p>7月9日算法总结：</p><p>动态规划专题：</p><p>动规五部曲：</p><p>背包问题：1.dp数组以及下标的含义（明白如何代表问题）</p><p>2.确定递归公式</p><p>3.如何初始dp</p><p>数组（这一步常常忽略）</p><p>4.确定遍历顺序（从前往后还是从后往前，物品和背包的先后顺序）</p><p>5.举例推导或打印dp数组检查</p><p>01背包问题：</p><p>1.分割等和子集</p><p>解题思路：平分为两个背包，然后转化成01背包问题；抽象化：nums[i]物品的价值和重量；target（平分后数值）;背包的容量；dp[j]是否能达到和为i的子集</p><p>注意：代码跑通了，也要时常想想为什么，是否还可以更好的优化，而不仅仅局限于一种解法，学会探索其中的乐趣。</p><p>2.最后一块石头的重量</p><p>求背包最多能装多少，和分割子集类似</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-4</title>
+    <link href="/2024/07/03/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-4/"/>
+    <url>/2024/07/03/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-4/</url>
+    
+    <content type="html"><![CDATA[<p>算法</p><p>贪心算法：学会寻找局部最优，以实现全局最优</p><p>452.用最少的箭引爆气球</p><p>解题：对于气球所处区间进行排序，然后判断重合的气球，每次都击中重合最多的，更新左右边界计算重合的气球数。最后整体最优解</p><p>406.根据身高重建队列</p><p>解题：难点是如何处理二维的数据；</p><p>解决方法：先对身高进行排序，然后排后面的数值，只要把身高小的插在前面就不影响身高高的后面的数值</p><p>860.柠檬水找零</p><p>解题：三种情况，第三种主要是先给出10元的和全给5元</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-2</title>
+    <link href="/2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-2/"/>
+    <url>/2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-2/</url>
+    
+    <content type="html"><![CDATA[<p><strong>7月3日</strong></p><p>我认为我现在的开发方法是不对的。我是要在开发中发现问题，不断学习，而不是一直迷迷糊糊的，你需要清楚自己需要知道什么。</p><p>1、业务开发的流程</p><p><strong>2、redis如何使用</strong></p><p>3、springboot各种注解</p><p>4、Java开发的代码的逻辑框架。</p><p>实现功能：</p><p><strong>登录拦截器优化</strong></p><p>：获取token</p><p>查询redis</p><p>3.保存到ThreadLocal</p><p>4.刷新</p><p>5.放行</p><p>只要用户一直访问，就不刷新：分类拦截</p><p>无需登录就可查看的</p><p>再加一个拦截器，拦截一切，仅仅是刷新</p><p><strong>第二次：需要登陆的</strong></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记-1</title>
+    <link href="/2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-1-1/"/>
+    <url>/2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-1-1/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>项目笔记</title>
+    <link href="/2024/07/02/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/"/>
+    <url>/2024/07/02/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="项目笔记"><a href="#项目笔记" class="headerlink" title="项目笔记"></a>项目笔记</h1><p>黑马点评</p><p>短信登录</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-3</title>
+    <link href="/2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-3/"/>
+    <url>/2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-3/</url>
+    
+    <content type="html"><![CDATA[<h1 id="今日算法-2"><a href="#今日算法-2" class="headerlink" title="今日算法-2"></a>今日算法-2</h1><p>跳跃游戏</p><p>利用贪心算法：</p><p>如何理解贪心算法</p><p>局部最优解求得整体</p><p>想法1：最小；极限假设，不行</p><p>想法2：最大；可行只要求得最大覆盖范围大于数组的长度即可，</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-2</title>
+    <link href="/2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-2/"/>
+    <url>/2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="今日算法-2"><a href="#今日算法-2" class="headerlink" title="今日算法-2"></a>今日算法-2</h1><p>跳跃游戏</p><p>利用贪心算法：</p><p>如何理解贪心算法</p><p>局部最优解求得整体</p><p>想法1：最小；极限假设，不行</p><p>想法2：最大；可行只要求得最大覆盖范围大于数组的长度即可，</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>今日算法-1</title>
+    <link href="/2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-1/"/>
+    <url>/2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-1/</url>
+    
+    <content type="html"><![CDATA[<p>LRU算法实践</p><p>LRU</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
