@@ -26,13 +26,13 @@
 <meta property="og:site_name" content="星月夜">
 <meta property="og:description" content="从信号量到分布式锁 ——并发的解决方法以及理解并发问题如何解决? 并发的本质是对有限资源的不对等抢占 。 操作系统底层我们从线程出发，因为线程是操作系统能够进行运算调度的最小单位  ，线程同步其中一种方法是信号量 ，信号量通常表示资源的数量 ，通过两个原子操作的系统调用函数来控制信号量 ，P、V操作， 进入减一 ，退出加一  ，等于0时阻塞 ，相当于互斥锁抢占了资源；当你明白了这个原理 ，就可以理">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/image/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/1746362540785.png">
+<meta property="og:image" content="http://example.com/2024/12/04/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/1746362540785.png">
 <meta property="article:published_time" content="2024-12-04T12:25:36.000Z">
 <meta property="article:modified_time" content="2025-05-04T12:48:37.667Z">
 <meta property="article:author" content="君实">
 <meta property="article:tag" content="技术理解">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/image/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/1746362540785.png">
+<meta name="twitter:image" content="http://example.com/2024/12/04/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/1746362540785.png">
   
   
   
@@ -294,7 +294,7 @@
 <h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><p>在分布式SOA设计原则的基础上 ，发展出了微服务架构</p>
 <p>将单体的服务拆分成多个小型、自治且松耦合的服务 。</p>
 <p>微服务的两个重点关注点， 拆分服务以及服务治理 。</p>
-<p>我们看下思维导图<img src="/image/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/1746362540785.png" srcset="/img/loading.gif" lazyload alt="1746362540785"></p>
+<p>我们看下思维导图<img src="/2024/12/04/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/1746362540785.png" srcset="/img/loading.gif" lazyload alt="1746362540785"></p>
 
                 
               </div>
