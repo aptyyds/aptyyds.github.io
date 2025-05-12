@@ -4,11 +4,30 @@
   
   
   <entry>
+    <title>test</title>
+    <link href="/2025/05/12/test/"/>
+    <url>/2025/05/12/test/</url>
+    
+    <content type="html"><![CDATA[<p>图片测试</p><p>![](E:\the personal blog\Blog_new\source\image\fenbushi.png)</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>test</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>fenbushi</title>
     <link href="/2025/05/12/fenbushi/"/>
     <url>/2025/05/12/fenbushi/</url>
     
-    <content type="html"><![CDATA[<p>图片</p><p>图片 </p><p>ehxo </p><p>![tup](E:\the personal blog\Blog_new\source\image\fenbushi.png)</p>]]></content>
+    <content type="html"><![CDATA[<p>图片</p><p>图片 </p><p>ehxo </p><p><img src="/image/fenbushi.png" alt="tup"></p>]]></content>
     
     
     
