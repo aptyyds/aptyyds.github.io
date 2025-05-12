@@ -19,24 +19,22 @@
   <meta name="author" content="君实">
   <meta name="keywords" content="">
   
-    <meta name="description" content="从信号量到分布式锁 ——并发的解决方法以及理解并发问题如何解决? 并发的本质是对有限资源的不对等抢占 。 操作系统底层我们从线程出发，因为线程是操作系统能够进行运算调度的最小单位  ，线程同步其中一种方法是信号量 ，信号量通常表示资源的数量 ，通过两个原子操作的系统调用函数来控制信号量 ，P、V操作， 进入减一 ，退出加一  ，等于0时阻塞 ，相当于互斥锁抢占了资源；当你明白了这个原理 ，就可以理">
+    <meta name="description" content="AI大模型使用方法以及心得体会相关的AI大模型智谱清言 、 ChatGPT、DeepSeek、Grok、Kimi 多平台集成cherry stuido的使用 编写Prompt的方法； 具体使用编写Prompt的方法AI 应用开发的技巧:·明确定义问题和目标:明确想要利用 AI去解决的问题，给 AI模型什么输入、以及期望从 Al 模型中得到什么样的输出 ·选择合适的模型:根据问题的特点和数据的属性选">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从信号量到分布式锁 ——并发的解决方法以及理解">
-<meta property="og:url" content="http://example.com/2024/12/04/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:title" content="AI大模型使用方法以及心得体会">
+<meta property="og:url" content="http://example.com/2025/05/04/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/index.html">
 <meta property="og:site_name" content="星月夜">
-<meta property="og:description" content="从信号量到分布式锁 ——并发的解决方法以及理解并发问题如何解决? 并发的本质是对有限资源的不对等抢占 。 操作系统底层我们从线程出发，因为线程是操作系统能够进行运算调度的最小单位  ，线程同步其中一种方法是信号量 ，信号量通常表示资源的数量 ，通过两个原子操作的系统调用函数来控制信号量 ，P、V操作， 进入减一 ，退出加一  ，等于0时阻塞 ，相当于互斥锁抢占了资源；当你明白了这个原理 ，就可以理">
+<meta property="og:description" content="AI大模型使用方法以及心得体会相关的AI大模型智谱清言 、 ChatGPT、DeepSeek、Grok、Kimi 多平台集成cherry stuido的使用 编写Prompt的方法； 具体使用编写Prompt的方法AI 应用开发的技巧:·明确定义问题和目标:明确想要利用 AI去解决的问题，给 AI模型什么输入、以及期望从 Al 模型中得到什么样的输出 ·选择合适的模型:根据问题的特点和数据的属性选">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/image/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/1746362540785.png">
-<meta property="article:published_time" content="2024-12-04T12:25:36.000Z">
-<meta property="article:modified_time" content="2025-05-04T12:48:37.667Z">
+<meta property="article:published_time" content="2025-05-04T13:43:59.000Z">
+<meta property="article:modified_time" content="2025-05-04T14:01:31.428Z">
 <meta property="article:author" content="君实">
-<meta property="article:tag" content="技术理解">
+<meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/image/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/1746362540785.png">
   
   
   
-  <title>从信号量到分布式锁 ——并发的解决方法以及理解 - 星月夜</title>
+  <title>AI大模型使用方法以及心得体会 - 星月夜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="从信号量到分布式锁 ——并发的解决方法以及理解"></span>
+            <span id="subtitle" data-typed-text="AI大模型使用方法以及心得体会"></span>
           
         </div>
 
@@ -213,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-04 20:25" pubdate>
-          2024年12月4日 晚上
+        <time datetime="2025-05-04 21:43" pubdate>
+          2025年5月4日 晚上
         </time>
       </span>
     
@@ -225,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          991 字
+          450 字
         
       </span>
     
@@ -236,7 +234,7 @@
         
         
         
-          9 分钟
+          4 分钟
         
       </span>
     
@@ -273,28 +271,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">从信号量到分布式锁 ——并发的解决方法以及理解</h1>
+            <h1 id="seo-header">AI大模型使用方法以及心得体会</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="从信号量到分布式锁-——并发的解决方法以及理解"><a href="#从信号量到分布式锁-——并发的解决方法以及理解" class="headerlink" title="从信号量到分布式锁 ——并发的解决方法以及理解"></a>从信号量到分布式锁 ——并发的解决方法以及理解</h1><p><strong>并发问题如何解决?</strong></p>
-<p>并发的本质是对有限资源的不对等抢占 。</p>
-<h2 id="操作系统底层"><a href="#操作系统底层" class="headerlink" title="操作系统底层"></a>操作系统底层</h2><p>我们从线程出发，因为线程是操作系统能够进行运算调度的最小单位  ，线程同步其中一种方法是信号量 ，信号量通常表示资源的数量 ，通过两个原子操作的系统调用函数来控制信号量 ，P、V操作， 进入减一 ，退出加一  ，等于0时阻塞 ，相当于互斥锁抢占了资源；当你明白了这个原理 ，就可以理解全部的并发解决方案 。</p>
-<h2 id="Java的解决方法"><a href="#Java的解决方法" class="headerlink" title="Java的解决方法"></a>Java的解决方法</h2><h3 id="单体服务上"><a href="#单体服务上" class="headerlink" title="单体服务上"></a>单体服务上</h3><p>首先 ，volatile关键字， 实现的是内存的可见性 ，相当于大家都可以看到的信号量 ，而synchronized ，在jdk1,7的实现中 ，与信号量的操作是一样 ，底层用的是操作系统的monitorenter 和monitorexit ，这是通过修饰代码块所采用的方法；修饰普通方法时 ， JVM 会通过 <code>ACC_SYNCHRONIZED</code> 标记符来实现同步 ， 你可以发现 ，他们是一样的 。如何不止一个线程，更多的资源需要同步一个资源 ，那么 ，标识依旧保留 ，把等待的资源串起来， 这个时候，就是一个经典的AQS ， AQS实现是由一个共享变量state和一个线程等待队列 ，更巧的是  ，state由volatile变量修饰 ，而AQS就是ReetrantLock的底层实现 。</p>
-<p>这个时候 ，你明白了线程资源的抢占 ，操作系统底层是由互斥锁和信号量 ，而到Java这里 ，有三个类似的 ，volatile ，实现的是内存的可见性 ，synchronized采用的是类似信号量的操作机制， 底层用的是操作系统的monitorenter 和monitorexit ，AQS ，是利用一个信号量加队列的方式实现 。</p>
-<p>单体的我们已经解决了。</p>
-<h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><p>而分布式时 ，会出现的问题是 ，没有一个类似volatile变量的东西，让变量对于所有的实例都是可见的 ，并且实时更新的 。</p>
-<p>这个时候 ，CAP理论，可以给我们指导 ，指的是在一个分布式系统中，Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性）这 3 个基本需求，最多只能同时满足其中的 2 个。</p>
-<p>简单而言 ，你不能同时要求提供的服务一直都是可用的，并且数据多副本完全一致 ，在遇到网络故障时 ，依旧保持一致性和可用性  。常见的分布式锁是 ，MySQL分布式锁 ，zookeeper分布式锁，Redis分布式锁 ；MySQL分手锁不常用 ，因为属于数据库IO操作 ，效率不高  ；zookeeper分布式锁保证的是CP ，redis分布式锁保证的是 AP。</p>
-<p>看下对比：</p>
-<p>Redis分布式锁：它追求的高可用性和分区容错性。Redis在追求高可用性时会在 Redis 写入主节点数据后，立即返回成功，不关心异步主节点同步从节点数据是否成功。Redis是基于内存的，性能极高，官方给的指标是每秒可达到10W的吞吐量。</p>
-<p>Zookeeper分布式锁：它追求的是强一致性和分区容错性。Zookeeper在写入主节点数据后会等到从节点同步完数据成后才会返回成功。为了数据的强一致性牺牲了一部分可用性。</p>
-<p>而在大部分的高并发场景下， 我们需要的都是可用性 ，redis分布式锁就是大部分锁采用的方案 。</p>
-<h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><p>在分布式SOA设计原则的基础上 ，发展出了微服务架构</p>
-<p>将单体的服务拆分成多个小型、自治且松耦合的服务 。</p>
-<p>微服务的两个重点关注点， 拆分服务以及服务治理 。</p>
-<p>我们看下思维导图<img src="/image/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/1746362540785.png" srcset="/img/loading.gif" lazyload alt="1746362540785"></p>
+                <h1 id="AI大模型使用方法以及心得体会"><a href="#AI大模型使用方法以及心得体会" class="headerlink" title="AI大模型使用方法以及心得体会"></a>AI大模型使用方法以及心得体会</h1><h2 id="相关的AI大模型"><a href="#相关的AI大模型" class="headerlink" title="相关的AI大模型"></a>相关的AI大模型</h2><p>智谱清言 、 ChatGPT、DeepSeek、Grok、Kimi</p>
+<h2 id="多平台集成"><a href="#多平台集成" class="headerlink" title="多平台集成"></a>多平台集成</h2><p>cherry stuido的使用</p>
+<p><strong>编写Prompt的方法；</strong></p>
+<h2 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h2><h3 id="编写Prompt的方法"><a href="#编写Prompt的方法" class="headerlink" title="编写Prompt的方法"></a>编写Prompt的方法</h3><p>AI 应用开发的技巧:<br>·明确定义问题和目标:明确想要利用 AI去解决的问题，给 AI模型什么输入、以及期望从 Al 模型中得到什么样的输出</p>
+<p>·选择合适的模型:根据问题的特点和数据的属性选择合适的 A模型。如 OpenAl的 GPT 系列通用性强、Google 的BERT 系列在 NLP 任务中表现出色(问答、文本分类)等，确保模型能够胜任你的任务。<br>·数据清洗和准备:对数据进行清洗和预处理，确保数据的质量，以提高模型的性能和准确度。还可以通过压缩字符串等方式降低使用 AI模型的成本。<br>·模型调优:尝试不同的 Prompt 和参数设置，并通过平台的 U或接口调用进行调试，以提高模型的性能和效果</p>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>分享我使用的一个方法  ，快速学习，入门 ，</p>
+<p>每个AI其实都有他们的强项 ，我们追求的是效率的提升 ，而不同的模型其实都有不同的倾向，有一定的适配性 。 </p>
+<p>比如我平时学习的时候， 一些网站资源的学习资料 ，打印成PDF之后 ，利用kimi文档整理功能（<a target="_blank" rel="noopener" href="https://kimi.moonshot.cn/">Kimi - 会推理解析，能深度思考的AI助手</a>），生成markmap格式代码 ，再放到生成思维导图的网站（如<a target="_blank" rel="noopener" href="https://www.min2k.com/tools/markmap/">中文Markmap - 思维导图在线生成、导出、分享与编辑器</a>），适当优化， 效果还是不错的。快速入门，总结、复盘都可以 。</p>
 
                 
               </div>
@@ -307,7 +296,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%8A%80%E6%9C%AF%E7%90%86%E8%A7%A3/" class="print-no-link">#技术理解</a>
+        <a href="/tags/AI/" class="print-no-link">#AI</a>
       
     </div>
   
@@ -319,8 +308,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>从信号量到分布式锁 ——并发的解决方法以及理解</div>
-      <div>http://example.com/2024/12/04/从信号量到分布式锁-——并发的解决方法以及理解/</div>
+      <div>AI大模型使用方法以及心得体会</div>
+      <div>http://example.com/2025/05/04/AI大模型使用方法以及心得体会/</div>
     </div>
     <div class="license-meta">
       
@@ -332,7 +321,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月4日</div>
+          <div>2025年5月4日</div>
         </div>
       
       
@@ -364,18 +353,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/04/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/" title="AI大模型使用方法以及心得体会">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AI大模型使用方法以及心得体会</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/09/16/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-18/" title="今日算法-18">
-                        <span class="hidden-mobile">今日算法-18</span>
+                      <a href="/2024/12/04/%E4%BB%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E7%90%86%E8%A7%A3/" title="从信号量到分布式锁 ——并发的解决方法以及理解">
+                        <span class="hidden-mobile">从信号量到分布式锁 ——并发的解决方法以及理解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
