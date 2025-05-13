@@ -4,17 +4,36 @@
   
   
   <entry>
-    <title>AI大模型使用方法以及心得体会</title>
-    <link href="/2025/05/04/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/"/>
-    <url>/2025/05/04/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/</url>
+    <title>JVM知识总结</title>
+    <link href="/2025/05/13/JVM%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"/>
+    <url>/2025/05/13/JVM%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</url>
     
-    <content type="html"><![CDATA[<h1 id="AI大模型使用方法以及心得体会"><a href="#AI大模型使用方法以及心得体会" class="headerlink" title="AI大模型使用方法以及心得体会"></a>AI大模型使用方法以及心得体会</h1><h2 id="相关的AI大模型"><a href="#相关的AI大模型" class="headerlink" title="相关的AI大模型"></a>相关的AI大模型</h2><p>智谱清言 、 ChatGPT、DeepSeek、Grok、Kimi</p><h2 id="多平台集成"><a href="#多平台集成" class="headerlink" title="多平台集成"></a>多平台集成</h2><p>cherry stuido的使用</p><p><strong>编写Prompt的方法；</strong></p><h2 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h2><h3 id="编写Prompt的方法"><a href="#编写Prompt的方法" class="headerlink" title="编写Prompt的方法"></a>编写Prompt的方法</h3><p>AI 应用开发的技巧:<br>·明确定义问题和目标:明确想要利用 AI去解决的问题，给 AI模型什么输入、以及期望从 Al 模型中得到什么样的输出</p><p>·选择合适的模型:根据问题的特点和数据的属性选择合适的 A模型。如 OpenAl的 GPT 系列通用性强、Google 的BERT 系列在 NLP 任务中表现出色(问答、文本分类)等，确保模型能够胜任你的任务。<br>·数据清洗和准备:对数据进行清洗和预处理，确保数据的质量，以提高模型的性能和准确度。还可以通过压缩字符串等方式降低使用 AI模型的成本。<br>·模型调优:尝试不同的 Prompt 和参数设置，并通过平台的 U或接口调用进行调试，以提高模型的性能和效果</p><h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>分享我使用的一个方法  ，快速学习，入门 ，</p><p>每个AI其实都有他们的强项 ，我们追求的是效率的提升 ，而不同的模型其实都有不同的倾向，有一定的适配性 。 </p><p>比如我平时学习的时候， 一些网站资源的学习资料 ，打印成PDF之后 ，利用kimi文档整理功能（<a href="https://kimi.moonshot.cn/">Kimi - 会推理解析，能深度思考的AI助手</a>），生成markmap格式代码 ，再放到生成思维导图的网站（如<a href="https://www.min2k.com/tools/markmap/">中文Markmap - 思维导图在线生成、导出、分享与编辑器</a>），适当优化， 效果还是不错的。快速入门，总结、复盘都可以 。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="JVM知识相关总结"><a href="#JVM知识相关总结" class="headerlink" title="JVM知识相关总结"></a>JVM知识相关总结</h1><p>JVM是Java底层的实现， 从对象的视角而言，包含了整个对象是如何创建，使用，并且销毁的 。</p><p>对象所处的位置 ，线程私有和共有，主要是程序计数器，虚拟机栈 ，本地方法栈，堆， 方法区 。后两者为公有 。</p><p>了解和熟悉JVM ，可以帮助理解Java为何可以多平台， 因为Java虚拟机的存在，让Java实现了一次编译 ，多平台运行 ， 同时也明白了Java的编译方法，包括JIT。</p><p>从组织架构而言，从文件读入内存， 到程序运行，到内存的回收，其实就是整个JVM的使命 。</p><p>首先 ，类加载器 ，负责加载Class文件 ，将二进制数据读入内存。到位置后，就可以正常跑起来 ，这就涉及到了运行时的数据区域，包含方法区、堆、虚拟机栈、本地方法栈 。</p><p>JVM的核心， 负责执行字节码，包括虚拟处理器，即时编译器（JIT）和垃圾回收器 。</p><p>上面，我们把读入内存，运行时内存说了，就到了回收内存 。</p><p>这就涉及到了垃圾回收 ，这是Java的一大特色，大二的时候，学习数据结构时， 用C++实现 ，C++是需要手动清理、回收内存的。而Java具有自动 回收对象占用的内存的特性 。</p><p>说到垃圾回收 ，就必须要了解垃圾回收的区域， 垃圾回收算法，垃圾回收器 ，如何判定对象是垃圾 。</p><p>全部的JVM的知识 ，了解完之后 ，在实际的生产开发中，就可以明白，如何进行JVM调优。</p><p>虽然我们已经知道了底层的JVM结构，但是这些对我们是不可见的 。</p><p>这就涉及到性能监控工具 ，包括，命令行工具、可视化工具、以及第三方工具。发现问题之后 ，进行JVM的参数配置 ，包括堆内存的大小 ，垃圾回收器，并行收集参数 ，GC日志 ，</p><p>常见的问题包括CPU彪高 ，内存泄露，fullGC 。</p><p>整体知识的思维导图：</p><p><img src="/2025/05/13/JVM%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/markmap-2025513zj.png"></p>]]></content>
     
     
     
     <tags>
       
-      <tag>AI</tag>
+      <tag>JVM</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CPU占用过高的排查经历</title>
+    <link href="/2025/05/12/CPU%E5%8D%A0%E7%94%A8%E8%BF%87%E9%AB%98%E7%9A%84%E6%8E%92%E6%9F%A5%E7%BB%8F%E5%8E%86/"/>
+    <url>/2025/05/12/CPU%E5%8D%A0%E7%94%A8%E8%BF%87%E9%AB%98%E7%9A%84%E6%8E%92%E6%9F%A5%E7%BB%8F%E5%8E%86/</url>
+    
+    <content type="html"><![CDATA[<h1 id="CPU占用过高的排查经历"><a href="#CPU占用过高的排查经历" class="headerlink" title="CPU占用过高的排查经历"></a>CPU占用过高的排查经历</h1><p>使用top命令查看CPU的占用情况 ，找到占用CPU较高的进程ID  ，</p><p><img src="/2025/05/12/CPU%E5%8D%A0%E7%94%A8%E8%BF%87%E9%AB%98%E7%9A%84%E6%8E%92%E6%9F%A5%E7%BB%8F%E5%8E%86/jvm-20240527111502.png"></p><p>jstack命令查看对应进程的线程堆栈信息</p><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">jstack -l &lt;pid&gt; &gt; thread-dump.txt<br></code></pre></td></tr></table></figure><p>使用top命令查看进程中线程的占用情况 ，找到占用CPU较高的线程ID ，</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">top</span> -H -<span class="hljs-selector-tag">p</span> &lt;pid&gt;<br></code></pre></td></tr></table></figure><p>注意：需要将显示线程的ID转化为16进制， 因为top命令显示的线程ID是十进制的 ，而jstack输出的是十六进制 </p><p>转化：</p><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-keyword">printf</span> <span class="hljs-string">&quot;<span class="hljs-variable">%x</span>\n&quot;</span> PID<br></code></pre></td></tr></table></figure><p>在jstack的输出中搜索这个十六进制的线程ID ，找到对应的堆栈信息 ；</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-string">&quot;Thread-5&quot;</span> #21 <span class="hljs-attribute">prio</span>=5 <span class="hljs-attribute">os_prio</span>=0 <span class="hljs-attribute">tid</span>=0x00007f812c018800 <span class="hljs-attribute">nid</span>=0x1a85 runnable [0x00007f811c000000]<br>   java.lang.Thread.State: RUNNABLE<br>    at com.example.MyClass.myMethod(MyClass.java:123)<br>    at <span class="hljs-built_in">..</span>.<br></code></pre></td></tr></table></figure><p>最后，根据堆栈信息定位到具体的业务方法，查看是否有死循环、频繁的垃圾回收、资源竞争导致的上下文频繁切换等问题。</p><p>内存飙高问题 </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>JVM</tag>
       
     </tags>
     
@@ -585,13 +604,13 @@
     <link href="/2024/07/04/JVM%E8%B0%83%E4%BC%98/"/>
     <url>/2024/07/04/JVM%E8%B0%83%E4%BC%98/</url>
     
-    <content type="html"><![CDATA[<p>关于JVM调优记录</p><p>首先 ，线上问题主要是两类 ，CPU和内存问题 。 </p><p>先从JVM的底层结构出发 ，再到相关工具的使用 发现问题 ，最后如何解决问题  。</p><p>今天遇到的是一个内存飙高的问题 。</p><p><strong>项目背景</strong></p><p>星火工厂，在长时间运行后，出现了服务器响应缓慢、最终导致系统崩溃的情况，初步怀疑是内存泄露导致的内存溢出（OutOfMemoryError）。</p><p><strong>问题分析过程</strong></p><ol><li><p>获取堆转储文件</p><ul><li>在系统的 JVM 启动参数中添加 <code>-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/data/dump</code>，这样当系统再次出现内存溢出时，就可以在指定路径下获取堆转储文件。经过一段时间的观察，成功获取到了堆转储文件。</li></ul></li><li><p>使用 MAT 工具分析堆转储文件</p><ul><li><strong>查看直方图（Histogram）视图</strong>：使用 MAT 打开堆转储文件后，首先查看直方图视图。发现 <code>com.xinghuo.factory.entity.ProductRecord</code>对象（产品记录实体类）的数量异常庞大，占用了相当大的内存空间。这表明产品记录相关的操作可能存在问题。</li><li><strong>分析引用链（Reference Chain）</strong>：右键点击 <code>ProductRecord</code>对象，选择 “List objects -&gt; with incoming references” 来查看引用链。发现这些 <code>ProductRecord</code>对象被一个名为 <code>ProductRecordCache</code>的缓存类大量引用。这个缓存类是开发团队为了提高产品记录查询效率而自定义的一个本地缓存。</li><li><strong>深入研究缓存类（Cache Class）</strong>：进一步查看 <code>ProductRecordCache</code>类的内部结构，发现它是一个简单的 <code>HashMap</code>实现的缓存，用于存储从数据库查询出来的产品记录。但是，在系统的业务逻辑中，每次有新的产品记录生成或者更新时，都会将新的记录添加到这个缓存中，而没有对缓存中的旧记录进行清理或者过期处理。这就导致了随着时间的推移和生产活动的持续进行，缓存中的 <code>ProductRecord</code>对象越来越多，最终耗尽内存。</li></ul><p><strong>有一个缓存类；大量查看 <code>ProductRecordCache</code>类的内部结构，发现它是一个简单的 <code>HashMap</code>实现的缓存，用于存储从数据库查询出来的产品记录。但是，在系统的业务逻辑中，每次有新的产品记录生成或者更新时，都会将新的记录添加到这个缓存中，而没有对缓存中的旧记录进行清理或者过期处理。这就导致了随着时间的推移和生产活动的持续进行，缓存中的 <code>ProductRecord</code>对象越来越多，最终耗尽内存。没有清理</strong></p></li></ol><p><strong>解决方案</strong></p><ol><li>优化缓存策略<ul><li>为 <code>ProductRecordCache</code>添加了一个定时清理机制。根据业务需求，设置每隔 24 小时清理一次缓存中超过一周未被访问的 <code>ProductRecord</code>对象。<br>设置缓存过期时间</li><li>在产品记录更新或者删除的业务逻辑中，同时更新缓存中的对应记录，确保缓存数据的准确性和及时性。</li></ul></li><li>内存监控与预警<ul><li>在系统中添加了内存监控模块，实时监测 JVM 内存使用情况。当内存使用率达到一定阈值（如 80%）时，通过邮件或者系统消息的方式通知开发人员和运维人员，以便及时采取措施，避免系统崩溃。</li></ul></li></ol><p>经过以上优化和改进后，星火工厂的生产管理系统在长时间运行后不再出现内存溢出问题，服务器响应速度也恢复正常，有效保障了工厂生产管理活动的顺利进行。</p>]]></content>
+    <content type="html"><![CDATA[<p>关于JVM调优记录</p><p>首先 ，线上问题主要是两类 ，CPU和内存问题 。 </p><p>先从JVM的底层结构出发 ，再到相关工具的使用 发现问题 ，最后如何解决问题  。</p><p>今天遇到的是一个内存飙高的问题 。</p><p><strong>项目背景</strong></p><p>星火工厂，在长时间运行后，出现了服务器响应缓慢、最终导致系统崩溃的情况，初步怀疑是内存泄露导致的内存溢出（OutOfMemoryError）。</p><p><strong>问题分析过程</strong></p><ol><li><p>获取堆转储文件</p><ul><li>在系统的 JVM 启动参数中添加 <code>-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/data/dump</code>，这样当系统再次出现内存溢出时，就可以在指定路径下获取堆转储文件。经过一段时间的观察，成功获取到了堆转储文件。</li></ul></li><li><p>使用 MAT 工具分析堆转储文件</p><ul><li><strong>查看直方图（Histogram）视图</strong>：使用 MAT 打开堆转储文件后，首先查看直方图视图。发现 <code>com.xinghuo.factory.entity.ProductRecord</code>对象（产品记录实体类）的数量异常庞大，占用了相当大的内存空间。这表明产品记录相关的操作可能存在问题。</li><li><strong>分析引用链（Reference Chain）</strong>：右键点击 <code>ProductRecord</code>对象，选择 “List objects -&gt; with incoming references” 来查看引用链。发现这些 <code>ProductRecord</code>对象被一个名为 <code>ProductRecordCache</code>的缓存类大量引用。这个缓存类是开发团队为了提高产品记录查询效率而自定义的一个本地缓存。</li><li><strong>深入研究缓存类（Cache Class）</strong>：进一步查看 <code>ProductRecordCache</code>类的内部结构，发现它是一个简单的 <code>HashMap</code>实现的缓存，用于存储从数据库查询出来的产品记录。但是，在系统的业务逻辑中，每次有新的产品记录生成或者更新时，都会将新的记录添加到这个缓存中，而没有对缓存中的旧记录进行清理或者过期处理。这就导致了随着时间的推移和生产活动的持续进行，缓存中的 <code>ProductRecord</code>对象越来越多，最终耗尽内存。</li></ul><p><strong>有一个缓存类；大量查看 <code>ProductRecordCache</code>类的内部结构，发现它是一个简单的 <code>HashMap</code>实现的缓存，用于存储从数据库查询出来的产品记录。但是，在系统的业务逻辑中，每次有新的产品记录生成或者更新时，都会将新的记录添加到这个缓存中，而没有对缓存中的旧记录进行清理或者过期处理。这就导致了随着时间的推移和生产活动的持续进行，缓存中的 <code>ProductRecord</code>对象越来越多，最终耗尽内存。没有清理</strong></p></li></ol><p><strong>解决方案</strong></p><ol><li>优化缓存策略<ul><li>为 <code>ProductRecordCache</code>添加了一个定时清理机制。根据业务需求，设置每隔 24 小时清理一次缓存中超过一周未被访问的 <code>ProductRecord</code>对象。<br>设置缓存过期时间</li><li>在产品记录更新或者删除的业务逻辑中，同时更新缓存中的对应记录，确保缓存数据的准确性和及时性。</li></ul></li><li>内存监控与预警<ul><li>在系统中添加了内存监控模块，实时监测 JVM 内存使用情况。当内存使用率达到一定阈值（如 80%）时，通过邮件或者系统消息的方式通知开发人员和运维人员，以便及时采取措施，避免系统崩溃。</li></ul></li></ol><p>经过以上优化和改进后，星火工厂的生产管理系统在长时间运行后不再出现内存溢出问题，服务器响应速度也恢复正常，有效保障了工厂生产管理活动的顺利进行。</p><p>扩展：</p><p>性能监控相关的命令行</p><p>操作系统层面：</p><p>top</p><p>vmstat</p><p>iostat</p><p>netstat</p><p>可以监控系统的整体资源使用情况 ，比如内存、cpu、IO使用情况 ，网络使用情况 。</p><p>jdk自带的命令行工具：用过 jps、jstat、jinfo、jmap、jhat、jstack、jcmd 等，可以查看 JVM 运行时信息、内存使用情况、堆栈信息等</p><p>关键的命令的使用</p><p>使用 <code>jmap -heap &lt;pid&gt;</code> 查看堆内存摘要，包括新生代、老年代、元空间等</p><p><img src="/2024/07/04/JVM%E8%B0%83%E4%BC%98/jvm-20240806093153.png"></p><p>生成堆转储文件</p><p>JVM调优主要包含以下流程：</p><p><img src="/2024/07/04/JVM%E8%B0%83%E4%BC%98/jvm-20240417094311(1).png"></p><p>采用相关命令监控相关资源的使用情况，分析系统的运行情况</p><p> 确定调优的目标</p><p>确定调优的参数</p><p>CPU占用过高</p><p>内存飙高</p><p>频繁minor gc</p><p>频繁full gc</p><p>思维导图：</p><p><img src="/2024/07/04/JVM%E8%B0%83%E4%BC%98/markmap-2025513jk.png"></p>]]></content>
     
     
     
     <tags>
       
-      <tag>实战经验记录</tag>
+      <tag>JVM</tag>
       
     </tags>
     

@@ -19,26 +19,24 @@
   <meta name="author" content="君实">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于JVM调优记录 首先 ，线上问题主要是两类 ，CPU和内存问题 。  先从JVM的底层结构出发 ，再到相关工具的使用 发现问题 ，最后如何解决问题  。 今天遇到的是一个内存飙高的问题 。 项目背景 星火工厂，在长时间运行后，出现了服务器响应缓慢、最终导致系统崩溃的情况，初步怀疑是内存泄露导致的内存溢出（OutOfMemoryError）。 问题分析过程  获取堆转储文件  在系统的 JVM">
+    <meta name="description" content="JVM知识相关总结JVM是Java底层的实现， 从对象的视角而言，包含了整个对象是如何创建，使用，并且销毁的 。 对象所处的位置 ，线程私有和共有，主要是程序计数器，虚拟机栈 ，本地方法栈，堆， 方法区 。后两者为公有 。 了解和熟悉JVM ，可以帮助理解Java为何可以多平台， 因为Java虚拟机的存在，让Java实现了一次编译 ，多平台运行 ， 同时也明白了Java的编译方法，包括JIT。 从">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM调优">
-<meta property="og:url" content="http://example.com/2024/07/04/JVM%E8%B0%83%E4%BC%98/index.html">
+<meta property="og:title" content="JVM知识总结">
+<meta property="og:url" content="http://example.com/2025/05/13/JVM%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="星月夜">
-<meta property="og:description" content="关于JVM调优记录 首先 ，线上问题主要是两类 ，CPU和内存问题 。  先从JVM的底层结构出发 ，再到相关工具的使用 发现问题 ，最后如何解决问题  。 今天遇到的是一个内存飙高的问题 。 项目背景 星火工厂，在长时间运行后，出现了服务器响应缓慢、最终导致系统崩溃的情况，初步怀疑是内存泄露导致的内存溢出（OutOfMemoryError）。 问题分析过程  获取堆转储文件  在系统的 JVM">
+<meta property="og:description" content="JVM知识相关总结JVM是Java底层的实现， 从对象的视角而言，包含了整个对象是如何创建，使用，并且销毁的 。 对象所处的位置 ，线程私有和共有，主要是程序计数器，虚拟机栈 ，本地方法栈，堆， 方法区 。后两者为公有 。 了解和熟悉JVM ，可以帮助理解Java为何可以多平台， 因为Java虚拟机的存在，让Java实现了一次编译 ，多平台运行 ， 同时也明白了Java的编译方法，包括JIT。 从">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/07/04/JVM%E8%B0%83%E4%BC%98/jvm-20240806093153.png">
-<meta property="og:image" content="http://example.com/2024/07/04/JVM%E8%B0%83%E4%BC%98/jvm-20240417094311(1).png">
-<meta property="og:image" content="http://example.com/2024/07/04/JVM%E8%B0%83%E4%BC%98/markmap-2025513jk.png">
-<meta property="article:published_time" content="2024-07-04T09:17:13.000Z">
-<meta property="article:modified_time" content="2025-05-13T02:01:49.682Z">
+<meta property="og:image" content="http://example.com/2025/05/13/JVM%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/markmap-2025513zj.png">
+<meta property="article:published_time" content="2025-05-13T01:50:13.000Z">
+<meta property="article:modified_time" content="2025-05-13T02:02:48.947Z">
 <meta property="article:author" content="君实">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2024/07/04/JVM%E8%B0%83%E4%BC%98/jvm-20240806093153.png">
+<meta name="twitter:image" content="http://example.com/2025/05/13/JVM%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/markmap-2025513zj.png">
   
   
   
-  <title>JVM调优 - 星月夜</title>
+  <title>JVM知识总结 - 星月夜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JVM调优"></span>
+            <span id="subtitle" data-typed-text="JVM知识总结"></span>
           
         </div>
 
@@ -215,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-04 17:17" pubdate>
-          2024年7月4日 下午
+        <time datetime="2025-05-13 09:50" pubdate>
+          2025年5月13日 上午
         </time>
       </span>
     
@@ -227,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          545 字
         
       </span>
     
@@ -238,7 +236,7 @@
         
         
         
-          10 分钟
+          5 分钟
         
       </span>
     
@@ -275,70 +273,26 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JVM调优</h1>
+            <h1 id="seo-header">JVM知识总结</h1>
             
             
               <div class="markdown-body">
                 
-                <p>关于JVM调优记录</p>
-<p>首先 ，线上问题主要是两类 ，CPU和内存问题 。 </p>
-<p>先从JVM的底层结构出发 ，再到相关工具的使用 发现问题 ，最后如何解决问题  。</p>
-<p>今天遇到的是一个内存飙高的问题 。</p>
-<p><strong>项目背景</strong></p>
-<p>星火工厂，在长时间运行后，出现了服务器响应缓慢、最终导致系统崩溃的情况，初步怀疑是内存泄露导致的内存溢出（OutOfMemoryError）。</p>
-<p><strong>问题分析过程</strong></p>
-<ol>
-<li><p>获取堆转储文件</p>
-<ul>
-<li>在系统的 JVM 启动参数中添加 <code>-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/data/dump</code>，这样当系统再次出现内存溢出时，就可以在指定路径下获取堆转储文件。经过一段时间的观察，成功获取到了堆转储文件。</li>
-</ul>
-</li>
-<li><p>使用 MAT 工具分析堆转储文件</p>
-<ul>
-<li><strong>查看直方图（Histogram）视图</strong>：使用 MAT 打开堆转储文件后，首先查看直方图视图。发现 <code>com.xinghuo.factory.entity.ProductRecord</code>对象（产品记录实体类）的数量异常庞大，占用了相当大的内存空间。这表明产品记录相关的操作可能存在问题。</li>
-<li><strong>分析引用链（Reference Chain）</strong>：右键点击 <code>ProductRecord</code>对象，选择 “List objects -&gt; with incoming references” 来查看引用链。发现这些 <code>ProductRecord</code>对象被一个名为 <code>ProductRecordCache</code>的缓存类大量引用。这个缓存类是开发团队为了提高产品记录查询效率而自定义的一个本地缓存。</li>
-<li><strong>深入研究缓存类（Cache Class）</strong>：进一步查看 <code>ProductRecordCache</code>类的内部结构，发现它是一个简单的 <code>HashMap</code>实现的缓存，用于存储从数据库查询出来的产品记录。但是，在系统的业务逻辑中，每次有新的产品记录生成或者更新时，都会将新的记录添加到这个缓存中，而没有对缓存中的旧记录进行清理或者过期处理。这就导致了随着时间的推移和生产活动的持续进行，缓存中的 <code>ProductRecord</code>对象越来越多，最终耗尽内存。</li>
-</ul>
-<p><strong>有一个缓存类；大量查看 <code>ProductRecordCache</code>类的内部结构，发现它是一个简单的 <code>HashMap</code>实现的缓存，用于存储从数据库查询出来的产品记录。但是，在系统的业务逻辑中，每次有新的产品记录生成或者更新时，都会将新的记录添加到这个缓存中，而没有对缓存中的旧记录进行清理或者过期处理。这就导致了随着时间的推移和生产活动的持续进行，缓存中的 <code>ProductRecord</code>对象越来越多，最终耗尽内存。没有清理</strong></p>
-</li>
-</ol>
-<p><strong>解决方案</strong></p>
-<ol>
-<li>优化缓存策略<ul>
-<li>为 <code>ProductRecordCache</code>添加了一个定时清理机制。根据业务需求，设置每隔 24 小时清理一次缓存中超过一周未被访问的 <code>ProductRecord</code>对象。<br>设置缓存过期时间</li>
-<li>在产品记录更新或者删除的业务逻辑中，同时更新缓存中的对应记录，确保缓存数据的准确性和及时性。</li>
-</ul>
-</li>
-<li>内存监控与预警<ul>
-<li>在系统中添加了内存监控模块，实时监测 JVM 内存使用情况。当内存使用率达到一定阈值（如 80%）时，通过邮件或者系统消息的方式通知开发人员和运维人员，以便及时采取措施，避免系统崩溃。</li>
-</ul>
-</li>
-</ol>
-<p>经过以上优化和改进后，星火工厂的生产管理系统在长时间运行后不再出现内存溢出问题，服务器响应速度也恢复正常，有效保障了工厂生产管理活动的顺利进行。</p>
-<p>扩展：</p>
-<p>性能监控相关的命令行</p>
-<p>操作系统层面：</p>
-<p>top</p>
-<p>vmstat</p>
-<p>iostat</p>
-<p>netstat</p>
-<p>可以监控系统的整体资源使用情况 ，比如内存、cpu、IO使用情况 ，网络使用情况 。</p>
-<p>jdk自带的命令行工具：用过 jps、jstat、jinfo、jmap、jhat、jstack、jcmd 等，可以查看 JVM 运行时信息、内存使用情况、堆栈信息等</p>
-<p>关键的命令的使用</p>
-<p>使用 <code>jmap -heap &lt;pid&gt;</code> 查看堆内存摘要，包括新生代、老年代、元空间等</p>
-<p><img src="/2024/07/04/JVM%E8%B0%83%E4%BC%98/jvm-20240806093153.png" srcset="/img/loading.gif" lazyload></p>
-<p>生成堆转储文件</p>
-<p>JVM调优主要包含以下流程：</p>
-<p><img src="/2024/07/04/JVM%E8%B0%83%E4%BC%98/jvm-20240417094311(1).png" srcset="/img/loading.gif" lazyload></p>
-<p>采用相关命令监控相关资源的使用情况，分析系统的运行情况</p>
-<p> 确定调优的目标</p>
-<p>确定调优的参数</p>
-<p>CPU占用过高</p>
-<p>内存飙高</p>
-<p>频繁minor gc</p>
-<p>频繁full gc</p>
-<p>思维导图：</p>
-<p><img src="/2024/07/04/JVM%E8%B0%83%E4%BC%98/markmap-2025513jk.png" srcset="/img/loading.gif" lazyload></p>
+                <h1 id="JVM知识相关总结"><a href="#JVM知识相关总结" class="headerlink" title="JVM知识相关总结"></a>JVM知识相关总结</h1><p>JVM是Java底层的实现， 从对象的视角而言，包含了整个对象是如何创建，使用，并且销毁的 。</p>
+<p>对象所处的位置 ，线程私有和共有，主要是程序计数器，虚拟机栈 ，本地方法栈，堆， 方法区 。后两者为公有 。</p>
+<p>了解和熟悉JVM ，可以帮助理解Java为何可以多平台， 因为Java虚拟机的存在，让Java实现了一次编译 ，多平台运行 ， 同时也明白了Java的编译方法，包括JIT。</p>
+<p>从组织架构而言，从文件读入内存， 到程序运行，到内存的回收，其实就是整个JVM的使命 。</p>
+<p>首先 ，类加载器 ，负责加载Class文件 ，将二进制数据读入内存。到位置后，就可以正常跑起来 ，这就涉及到了运行时的数据区域，包含方法区、堆、虚拟机栈、本地方法栈 。</p>
+<p>JVM的核心， 负责执行字节码，包括虚拟处理器，即时编译器（JIT）和垃圾回收器 。</p>
+<p>上面，我们把读入内存，运行时内存说了，就到了回收内存 。</p>
+<p>这就涉及到了垃圾回收 ，这是Java的一大特色，大二的时候，学习数据结构时， 用C++实现 ，C++是需要手动清理、回收内存的。而Java具有自动 回收对象占用的内存的特性 。</p>
+<p>说到垃圾回收 ，就必须要了解垃圾回收的区域， 垃圾回收算法，垃圾回收器 ，如何判定对象是垃圾 。</p>
+<p>全部的JVM的知识 ，了解完之后 ，在实际的生产开发中，就可以明白，如何进行JVM调优。</p>
+<p>虽然我们已经知道了底层的JVM结构，但是这些对我们是不可见的 。</p>
+<p>这就涉及到性能监控工具 ，包括，命令行工具、可视化工具、以及第三方工具。发现问题之后 ，进行JVM的参数配置 ，包括堆内存的大小 ，垃圾回收器，并行收集参数 ，GC日志 ，</p>
+<p>常见的问题包括CPU彪高 ，内存泄露，fullGC 。</p>
+<p>整体知识的思维导图：</p>
+<p><img src="/2025/05/13/JVM%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/markmap-2025513zj.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -363,8 +317,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JVM调优</div>
-      <div>http://example.com/2024/07/04/JVM调优/</div>
+      <div>JVM知识总结</div>
+      <div>http://example.com/2025/05/13/JVM知识总结/</div>
     </div>
     <div class="license-meta">
       
@@ -376,7 +330,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月4日</div>
+          <div>2025年5月13日</div>
         </div>
       
       
@@ -408,18 +362,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="../../09/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-5/" title="今日算法 -5">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">今日算法 -5</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="../../03/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-4/" title="今日算法-4">
-                        <span class="hidden-mobile">今日算法-4</span>
+                      <a href="../../12/CPU%E5%8D%A0%E7%94%A8%E8%BF%87%E9%AB%98%E7%9A%84%E6%8E%92%E6%9F%A5%E7%BB%8F%E5%8E%86/" title="CPU占用过高的排查经历">
+                        <span class="hidden-mobile">CPU占用过高的排查经历</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
