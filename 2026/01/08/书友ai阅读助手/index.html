@@ -1,0 +1,696 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../img/fluid.png">
+  <link rel="icon" href="../../../../img/index.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="君实">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="良书亦友主页面功能概览 阅读一定进度解锁人物 好友聊天 ，类似微信页面 添加好友  删除好友  阅读解答AI助手 场景实现 ，辩论  ，ai评分  硬件结合 学习机或者平板 ，可以 场景模拟 不局限于辩论 ， 比如三英战吕布 ，选择人物， 看看打不打得过  先生何在？备特来求见 ，今天下乱世 ，备预谋大业 ，求先生出山，共图大业 场景模拟   场景模拟ai评分 场景历史记录 先生 ，可在？备特来求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="书友ai阅读助手">
+<meta property="og:url" content="http://example.com/2026/01/08/%E4%B9%A6%E5%8F%8Bai%E9%98%85%E8%AF%BB%E5%8A%A9%E6%89%8B/index.html">
+<meta property="og:site_name" content="星月夜">
+<meta property="og:description" content="良书亦友主页面功能概览 阅读一定进度解锁人物 好友聊天 ，类似微信页面 添加好友  删除好友  阅读解答AI助手 场景实现 ，辩论  ，ai评分  硬件结合 学习机或者平板 ，可以 场景模拟 不局限于辩论 ， 比如三英战吕布 ，选择人物， 看看打不打得过  先生何在？备特来求见 ，今天下乱世 ，备预谋大业 ，求先生出山，共图大业 场景模拟   场景模拟ai评分 场景历史记录 先生 ，可在？备特来求">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/xMKWUZMfAOKcOJx4.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/uw0vomZYBLCh08JD.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/4QeBpEZ6SJVMBczH.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/JpOmNSgCgC5c6FB1.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/v1KNrEzKhh7Ftloz.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/8ureqlYpnpgCkOlM.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/8MS4gzEGcWtEAIqb.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/JCt5MnCUBO93Y5v1.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/tyR2TAgaaHZyFNPH.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/NOUwmfnORxAYjTvo.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/gdeAGF1bCBrSIiPo.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/dYqZiODbWF5qLd47.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/kQ8xVP2IemsCMZPK.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/YgWKankCJj3lrNrQ.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/OI7edeS62gLxMt0E.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/9U0gMlN1bK3Z9xSh.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/WoDl9J8AzniwABfg.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/190CZP0KOuIID4vq.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/lR3ULoygyzwsaD8f.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/UGtka9U2DP0NUo2y.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/uILeQIU2i3cvbBNu.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+<meta property="og:image" content="http://example.com/2026/01/08/%E4%B9%A6%E5%8F%8Bai%E9%98%85%E8%AF%BB%E5%8A%A9%E6%89%8B/1767838697066.png">
+<meta property="article:published_time" content="2026-01-08T04:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-08T06:40:04.901Z">
+<meta property="article:author" content="君实">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yach-doc-shimo.zhiyinlou.com/uploader/f/xMKWUZMfAOKcOJx4.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA">
+  
+  
+  
+  <title>书友ai阅读助手 - 星月夜</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../../js/utils.js" ></script>
+  <script  src="../../../../js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../../index.html">
+      <strong>君实</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../../img/XilmO.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="书友ai阅读助手"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-08 12:00" pubdate>
+          2026年1月8日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          572 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">书友ai阅读助手</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="良书亦友主页面功能概览"><a href="#良书亦友主页面功能概览" class="headerlink" title="良书亦友主页面功能概览"></a>良书亦友主页面功能概览</h1><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/xMKWUZMfAOKcOJx4.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h1 id><a href="#" class="headerlink" title></a></h1><h1 id="阅读一定进度解锁人物"><a href="#阅读一定进度解锁人物" class="headerlink" title="阅读一定进度解锁人物"></a>阅读一定进度解锁人物</h1><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/uw0vomZYBLCh08JD.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h1 id="好友聊天-，类似微信页面"><a href="#好友聊天-，类似微信页面" class="headerlink" title="好友聊天 ，类似微信页面"></a>好友聊天 ，类似微信页面</h1><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/4QeBpEZ6SJVMBczH.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>添加好友</p>
+<p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/JpOmNSgCgC5c6FB1.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>删除好友</p>
+<p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/v1KNrEzKhh7Ftloz.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h1 id="阅读解答AI助手"><a href="#阅读解答AI助手" class="headerlink" title="阅读解答AI助手"></a>阅读解答AI助手</h1><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/8ureqlYpnpgCkOlM.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>场景实现 ，辩论  ，ai评分 </p>
+<p>硬件结合 学习机或者平板 ，可以</p>
+<p>场景模拟</p>
+<p>不局限于辩论 ，</p>
+<p>比如三英战吕布 ，选择人物， 看看打不打得过 </p>
+<p>先生何在？备特来求见 ，今天下乱世 ，备预谋大业 ，求先生出山，共图大业</p>
+<h1 id="场景模拟"><a href="#场景模拟" class="headerlink" title="场景模拟"></a>场景模拟</h1><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/8MS4gzEGcWtEAIqb.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/JCt5MnCUBO93Y5v1.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/tyR2TAgaaHZyFNPH.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="场景模拟ai评分"><a href="#场景模拟ai评分" class="headerlink" title="场景模拟ai评分"></a>场景模拟ai评分</h2><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/NOUwmfnORxAYjTvo.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="场景历史记录"><a href="#场景历史记录" class="headerlink" title="场景历史记录"></a>场景历史记录</h2><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/gdeAGF1bCBrSIiPo.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>先生 ，可在？备特来求见</p>
+<p>备特来求见 ，今天下乱世 ，备预谋大业 ，求先生出山，共图大业， 烦请通报</p>
+<p>备特来求见 ，今天下乱世 ，备预谋大业 ，求先生出山，共图大业， 我等在此等候</p>
+<p>备特来求见 ，今天下乱世 ，备预谋大业 ，求先生出山，共图大业， 我等在此等候 ，直到先生醒来</p>
+<p>三弟莫急 ，诸葛先生有经天纬地之才，等候无妨</p>
+<p>先生何在？备特来求见 ，今天下乱世 ，备预谋大业 ，求先生出山，共图大业</p>
+<h1 id="群聊功能"><a href="#群聊功能" class="headerlink" title="群聊功能"></a>群聊功能</h1><h2 id="拉群聊天"><a href="#拉群聊天" class="headerlink" title="拉群聊天"></a>拉群聊天</h2><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/dYqZiODbWF5qLd47.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/kQ8xVP2IemsCMZPK.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>生成rag知识库， 导入聊天记录 ，阅读书籍  ，一键生成阅读思维导图 ，以及理解解读</p>
+<p>添加好友+阅读到一定章节解锁人物</p>
+<p>触发朋友圈功能</p>
+<h1 id="书友圈功能"><a href="#书友圈功能" class="headerlink" title="书友圈功能"></a>书友圈功能</h1><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/YgWKankCJj3lrNrQ.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/OI7edeS62gLxMt0E.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="生成朋友圈-，文字内容优化-，图片ai生成"><a href="#生成朋友圈-，文字内容优化-，图片ai生成" class="headerlink" title="生成朋友圈 ，文字内容优化 ，图片ai生成"></a>生成朋友圈 ，文字内容优化 ，图片ai生成</h2><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/9U0gMlN1bK3Z9xSh.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>点击图片实现预览</p>
+<p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/WoDl9J8AzniwABfg.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h1 id="书架额外功能："><a href="#书架额外功能：" class="headerlink" title="书架额外功能："></a>书架额外功能：</h1><h2 id="一键导入书籍"><a href="#一键导入书籍" class="headerlink" title="一键导入书籍"></a>一键导入书籍</h2><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/190CZP0KOuIID4vq.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="书籍详情-书籍介绍"><a href="#书籍详情-书籍介绍" class="headerlink" title="书籍详情-书籍介绍"></a>书籍详情-书籍介绍</h2><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/lR3ULoygyzwsaD8f.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="人物关系图"><a href="#人物关系图" class="headerlink" title="人物关系图"></a>人物关系图</h2><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/UGtka9U2DP0NUo2y.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="阅读数据"><a href="#阅读数据" class="headerlink" title="阅读数据"></a>阅读数据</h2><p><img src="https://yach-doc-shimo.zhiyinlou.com/uploader/f/uILeQIU2i3cvbBNu.png?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Njc1NDUyODQsImZpbGVHVUlEIjoiNXJrOWRlVlBFNGN2VndxeCIsImlhdCI6MTc2NzUzODA4NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjozNjcwNDQwfQ.ptx29wVxK7lg7cwD4xiQ0jJfwCfylZ8gqQN7yVOYNCA" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h1 id="可新增ideas"><a href="#可新增ideas" class="headerlink" title="可新增ideas"></a>可新增ideas</h1><p>1.生成rag知识库， 导入聊天记录 ，阅读书籍  ，一键生成阅读思维导图 ，以及理解解读</p>
+<p><img src="/2026/01/08/%E4%B9%A6%E5%8F%8Bai%E9%98%85%E8%AF%BB%E5%8A%A9%E6%89%8B/1767838697066.png" srcset="/img/loading.gif" lazyload alt="1767838697066"></p>
+<p>2.场景实现 ，辩论  ，ai评分 </p>
+<p>硬件结合 学习机或者平板 ，可以</p>
+<p>场景模拟</p>
+<p>不局限于辩论 ，</p>
+<p>比如三英战吕布 ，选择人物， 看看打不打得过 </p>
+<h1 id="配置修改"><a href="#配置修改" class="headerlink" title="配置修改"></a>配置修改</h1><p>书友圈-ai生成图片</p>
+<p>百度智能云-ai作图-极速版</p>
+<p><a target="_blank" rel="noopener" href="https://console.bce.baidu.com/ai-engine/old/#/ai/intelligentwriting/app/detail~appId=7353056">https://console.bce.baidu.com/ai-engine/old/#/ai/intelligentwriting/app/detail~appId=7353056</a></p>
+<p>调用监控</p>
+<p><a target="_blank" rel="noopener" href="https://console.bce.baidu.com/ai-engine/imageprocess/report/index">https://console.bce.baidu.com/ai-engine/imageprocess/report/index</a></p>
+<p>对话配置-deepseek apikey</p>
+<p>调整朋友圈图片配置 ，1k平稳 ，4k导致服务降级</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="../../../../tags/AI/" class="print-no-link">#AI</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>书友ai阅读助手</div>
+      <div>http://example.com/2026/01/08/书友ai阅读助手/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>君实</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../../../../2025/09/03/%E5%AD%97%E8%8A%82%E5%BC%80%E6%BA%90%E7%9A%84DeerFlow%E8%AF%A6%E8%A7%A3/" title="字节开源的DeerFlow详解">
+                        <span class="hidden-mobile">字节开源的DeerFlow详解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../../js/events.js" ></script>
+<script  src="../../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
