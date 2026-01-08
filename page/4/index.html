@@ -227,6 +227,326 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="../../2024/07/12/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-8/" target="_self">
+          今日算法-8
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/12/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-8/" target="_self">
+        <div>
+          动态规划322零钱兑换零钱无数 兑换零钱总数 背包 组合数 dp[j]装满容量为j，最少物品dp[j] 递推公式  ：  dp[j] &#x3D;min( dp[j-coins[i]]+1 ,dp[j]); 初始化：min;应该初始化为最大值 dp[0] &#x3D; 0; 先物品后背包（组合） 先背包后物品（排列）背包内元素的次序 不影响，因为是最小 for(int i &#x3D; 0 ; i
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-12 20:21" pubdate>
+              2024-07-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="../../tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="../../2024/07/12/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-6/" target="_self">
+          项目笔记-6
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/12/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-6/" target="_self">
+        <div>
+          redis短信登录功能 只要用户一直访问，不断更新有效期 redis的token有效期 实现：拦截器 关于注入技巧 基于public 下写时，注意注入别的类，才可以访问 spring 创建的对象可以自动注入；自己new的函数往往是无法利用spring实现依赖注入的，自带的才可以，用到的时候再去手动注入 关于这个问题，不需要手动注入， 可以找到用到它的类；且该类是由spring自动注入的；其实就是把
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-12 10:27" pubdate>
+              2024-07-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="../../tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="../../2024/07/11/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-5/" target="_self">
+          项目笔记-5
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/11/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-5/" target="_self">
+        <div>
+          基于redis实现短信登录  替代session putAll方案 存东西时，最好加上一个前缀，表示业务逻辑
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-11 21:04" pubdate>
+              2024-07-11
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="../../tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="../../2024/07/11/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-7/" target="_self">
+          今日算法-7
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/11/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-7/" target="_self">
+        <div>
+          动态规划总结 01背包问题 每个物品的数量只有一个，选或者不选，01背包 max(dp[j], dp[j - weight[i]] + value[i])根据一个的重量和价值一起判断，是否要取这个物品。 动规的五部曲：  确定dp数组（dp table）以及下标的含义 确定递推公式 dp数组如何初始化 确定遍历顺序 举例推导dp数组  其实只要把各个问题的东西抽象成背包，物品 ， 价值，容量，自己
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-11 19:37" pubdate>
+              2024-07-11
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="../../tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="../../2024/07/11/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1/" target="_self">
+          每日八股
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/11/%E6%AF%8F%E6%97%A5%E5%85%AB%E8%82%A1/" target="_self">
+        <div>
+          操作系统 4.在4G的物理内存的机器上申请8G的内存会如何？、 操作系统虚拟内存大小 和操作系统的位数大小有关 32位操作系统，进程理论上只能申请最大为3GB的虚拟内存；直接申请8G，失败；64位，最大可以申请128TB；（）  2^32 &#x3D; 4,294,967,296 个地址。 每个地址代表一个字节（Byte），所以地址空间大小就是 4,294,967,296 字节，即 4GB  申请
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-11 08:40" pubdate>
+              2024-07-11
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="../../tags/%E5%85%AB%E8%82%A1/">#八股</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="../../2024/07/10/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-4/" target="_self">
+          项目笔记-4
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/10/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-4/" target="_self">
+        <div>
+          关于保存用户登录状态信息： ThreadLocal ； 作用：java中的一个类，提供线程局部变量，每个访问变量的线程都有其自己独立初始化的变量副本；ThreadLocal实例，隔离的保存各个线程的数据，确保线程之间不会相互干扰，避免因为并发访问导致的数据不一致性问题 如何正确的启动项目 ngnix redis mysql 黑马点评
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-10 11:33" pubdate>
+              2024-07-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="../../tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="../../2024/07/10/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-6/" target="_self">
+          今日算法-6
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/10/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-6/" target="_self">
+        <div>
+          动态规划 1.目标和 问题转化：01背包问题 加法总和：x；减法总和sum-x 要求：x-（sum-x） &#x3D; target x &#x3D; （target+ sum）&#x2F;2 装满容量为x的背包，有几种方法 x；就是bagSize； 2.一和零 五部曲； 背包有两个维度，m, n ；不同长度的字符串就是不同大小的物品 dp[i][j]最多有i个0和j个1的strs的最大子集的大小
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-10 09:43" pubdate>
+              2024-07-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="../../tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="../../2024/07/10/%E5%85%AB%E8%82%A1-1/" target="_self">
+          八股-1
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/10/%E5%85%AB%E8%82%A1-1/" target="_self">
+        <div>
+          操作系统： 内存管理： 1.为什么要有虚拟内存？ 分页（多级页表，TLB）、分段、段页式内存管理，Linux内存管理 2.malloc是如何分配内存的？ 非系统调用，函数，动态分配内存 brk（）； mmap（）； malloc 通过brk（）申请，free释放时，内存不还操作系统，缓存在mallco池； 通过mmap（）申请 ，free释放，会把内存归还给操作系统。真正释放 3.内存满了之后 后
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-10 07:42" pubdate>
+              2024-07-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="../../tags/%E5%85%AB%E8%82%A1/">#八股</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="../../2024/07/09/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-3/" target="_self">
           项目笔记-3
         </a>
@@ -301,324 +621,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="../../2024/07/04/JVM%E8%B0%83%E4%BC%98/" target="_self">
-          JVM调优
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/04/JVM%E8%B0%83%E4%BC%98/" target="_self">
-        <div>
-          关于JVM调优记录 首先 ，线上问题主要是两类 ，CPU和内存问题 。  先从JVM的底层结构出发 ，再到相关工具的使用 发现问题 ，最后如何解决问题  。 今天遇到的是一个内存飙高的问题 。 项目背景 星火工厂，在长时间运行后，出现了服务器响应缓慢、最终导致系统崩溃的情况，初步怀疑是内存泄露导致的内存溢出（OutOfMemoryError）。 问题分析过程  获取堆转储文件  在系统的 JVM
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 17:17" pubdate>
-              2024-07-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="../../tags/JVM/">#JVM</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="../../2024/07/03/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-4/" target="_self">
-          今日算法-4
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/03/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-4/" target="_self">
-        <div>
-          算法 贪心算法：学会寻找局部最优，以实现全局最优 452.用最少的箭引爆气球 解题：对于气球所处区间进行排序，然后判断重合的气球，每次都击中重合最多的，更新左右边界计算重合的气球数。最后整体最优解 406.根据身高重建队列 解题：难点是如何处理二维的数据； 解决方法：先对身高进行排序，然后排后面的数值，只要把身高小的插在前面就不影响身高高的后面的数值 860.柠檬水找零 解题：三种情况，第三种主要
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-03 21:41" pubdate>
-              2024-07-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="../../tags/%E7%AE%97%E6%B3%95/">#算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="../../2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-2/" target="_self">
-          项目笔记-2
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-2/" target="_self">
-        <div>
-          7月3日 我认为我现在的开发方法是不对的。我是要在开发中发现问题，不断学习，而不是一直迷迷糊糊的，你需要清楚自己需要知道什么。 1、业务开发的流程 2、redis如何使用 3、springboot各种注解 4、Java开发的代码的逻辑框架。 实现功能： 登录拦截器优化 ：获取token 查询redis 3.保存到ThreadLocal 4.刷新 5.放行 只要用户一直访问，就不刷新：分类拦截 无需
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-03 21:37" pubdate>
-              2024-07-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="../../tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="../../2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-1-1/" target="_self">
-          项目笔记-1
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/03/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0-1-1/" target="_self">
-        <div>
-          
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-03 21:36" pubdate>
-              2024-07-03
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="../../2024/07/02/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" target="_self">
-          项目笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/02/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" target="_self">
-        <div>
-          项目笔记黑马点评 短信登录
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-02 09:42" pubdate>
-              2024-07-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="../../tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="../../2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-3/" target="_self">
-          今日算法-3
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-3/" target="_self">
-        <div>
-          今日算法-2跳跃游戏 利用贪心算法： 如何理解贪心算法 局部最优解求得整体 想法1：最小；极限假设，不行 想法2：最大；可行只要求得最大覆盖范围大于数组的长度即可，
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-02 09:23" pubdate>
-              2024-07-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="../../tags/%E7%AE%97%E6%B3%95/">#算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="../../2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-2/" target="_self">
-          今日算法-2
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-2/" target="_self">
-        <div>
-          今日算法-2跳跃游戏 利用贪心算法： 如何理解贪心算法 局部最优解求得整体 想法1：最小；极限假设，不行 想法2：最大；可行只要求得最大覆盖范围大于数组的长度即可，
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-02 09:12" pubdate>
-              2024-07-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="../../tags/%E7%AE%97%E6%B3%95/">#算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="../../2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-1/" target="_self">
-          今日算法-1
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="../../2024/07/02/%E4%BB%8A%E6%97%A5%E7%AE%97%E6%B3%95-1/" target="_self">
-        <div>
-          LRU算法实践 LRU
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-02 08:57" pubdate>
-              2024-07-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="../../tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">#算法笔记</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="../3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="../../">1</a><a class="page-number" href="../2/#board">2</a><a class="page-number" href="../3/#board">3</a><span class="page-number current">4</span>
+      <a class="extend prev" rel="prev" href="../3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="../../">1</a><a class="page-number" href="../2/#board">2</a><a class="page-number" href="../3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="../5/#board">5</a><a class="extend next" rel="next" href="../5/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
