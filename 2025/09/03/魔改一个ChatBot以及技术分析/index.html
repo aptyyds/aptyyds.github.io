@@ -19,15 +19,23 @@
   <meta name="author" content="君实">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="一、项目介绍二 、访问链接部署上线的访问页面链接（需要VPN）（游客页面，无需登录） ChatBot 登录页面（需VPN） Login 三 、功能支持1、生成代码一键运行   2、白板式生成文章 3、天气查询 一键生成天气图片  四、AI Chatbot 项目后端技术栈与业务实现分析后端技术栈1. 核心框架 Next.js 15.3 - 全栈 React 框架，支持 SSR 和 API Route">
+<meta property="og:type" content="article">
 <meta property="og:title" content="魔改一个ChatBot以及技术分析">
 <meta property="og:url" content="http://example.com/2025/09/03/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="星月夜">
+<meta property="og:description" content="一、项目介绍二 、访问链接部署上线的访问页面链接（需要VPN）（游客页面，无需登录） ChatBot 登录页面（需VPN） Login 三 、功能支持1、生成代码一键运行   2、白板式生成文章 3、天气查询 一键生成天气图片  四、AI Chatbot 项目后端技术栈与业务实现分析后端技术栈1. 核心框架 Next.js 15.3 - 全栈 React 框架，支持 SSR 和 API Route">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/09/03/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/1756880579993.png">
+<meta property="og:image" content="http://example.com/2025/09/03/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/1756880654108.png">
+<meta property="og:image" content="http://example.com/2025/09/03/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/1756880725209.png">
+<meta property="og:image" content="http://example.com/2025/09/03/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/1756880986757.png">
 <meta property="article:published_time" content="2025-09-03T04:22:04.000Z">
-<meta property="article:modified_time" content="2025-09-03T04:22:04.883Z">
+<meta property="article:modified_time" content="2026-01-08T03:27:33.487Z">
 <meta property="article:author" content="君实">
+<meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2025/09/03/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/1756880579993.png">
   
   
   
@@ -220,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          924 字
         
       </span>
     
@@ -231,7 +239,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -273,7 +281,133 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="一、项目介绍"><a href="#一、项目介绍" class="headerlink" title="一、项目介绍"></a>一、项目介绍</h1><h1 id="二-、访问链接"><a href="#二-、访问链接" class="headerlink" title="二 、访问链接"></a>二 、访问链接</h1><p>部署上线的访问页面链接（需要VPN）（游客页面，无需登录）</p>
+<p><a target="_blank" rel="noopener" href="https://chatbox-nu-eosin.vercel.app/">ChatBot</a></p>
+<p>登录页面（需VPN）</p>
+<p><a target="_blank" rel="noopener" href="https://chatbox-52e5mngls-kling-zeros-projects.vercel.app/">Login</a></p>
+<h1 id="三-、功能支持"><a href="#三-、功能支持" class="headerlink" title="三 、功能支持"></a>三 、功能支持</h1><p>1、生成代码一键运行</p>
+<p><img src="/2025/09/03/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/1756880579993.png" srcset="/img/loading.gif" lazyload alt="1756880579993"></p>
+<p><img src="/2025/09/03/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/1756880654108.png" srcset="/img/loading.gif" lazyload alt="1756880654108"></p>
+<p>2、白板式生成文章<br><img src="/2025/09/03/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/1756880725209.png" srcset="/img/loading.gif" lazyload alt="1756880725209"></p>
+<p>3、天气查询</p>
+<p>一键生成天气图片</p>
+<p><img src="/2025/09/03/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/%E9%AD%94%E6%94%B9%E4%B8%80%E4%B8%AAChatBot%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/1756880986757.png" srcset="/img/loading.gif" lazyload alt="1756880986757"></p>
+<h1 id="四、AI-Chatbot-项目后端技术栈与业务实现分析"><a href="#四、AI-Chatbot-项目后端技术栈与业务实现分析" class="headerlink" title="四、AI Chatbot 项目后端技术栈与业务实现分析"></a>四、AI Chatbot 项目后端技术栈与业务实现分析</h1><h2 id="后端技术栈"><a href="#后端技术栈" class="headerlink" title="后端技术栈"></a>后端技术栈</h2><h3 id="1-核心框架"><a href="#1-核心框架" class="headerlink" title="1. 核心框架"></a>1. <strong>核心框架</strong></h3><ul>
+<li><strong>Next.js 15.3</strong> - 全栈 React 框架，支持 SSR 和 API Routes</li>
+<li><strong>TypeScript</strong> - 类型安全的 JavaScript 超集</li>
+<li><strong>Turbo</strong> - 高性能构建工具</li>
+</ul>
+<h3 id="2-数据库层"><a href="#2-数据库层" class="headerlink" title="2. 数据库层"></a>2. <strong>数据库层</strong></h3><ul>
+<li><strong>PostgreSQL</strong> - 主数据库，使用 Vercel Postgres</li>
+<li><strong>Drizzle ORM</strong> - 现代化的 TypeScript ORM<ul>
+<li>类型安全的查询构建</li>
+<li>自动迁移管理</li>
+<li>支持关系查询</li>
+</ul>
+</li>
+<li><strong>Redis</strong> - 缓存和流处理（可选）</li>
+</ul>
+<h3 id="3-身份认证系统"><a href="#3-身份认证系统" class="headerlink" title="3. 身份认证系统"></a>3. <strong>身份认证系统</strong></h3><ul>
+<li><strong>NextAuth.js v5</strong> - 完整的身份认证解决方案</li>
+<li><strong>bcrypt-ts</strong> - 密码哈希加密</li>
+<li><strong>JWT</strong> - 无状态会话管理</li>
+<li>支持两种用户类型：<ul>
+<li><code>guest</code> - 访客用户（每日20条消息限制）</li>
+<li><code>regular</code> - 注册用户（每日100条消息限制）</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-AI-集成"><a href="#4-AI-集成" class="headerlink" title="4. AI 集成"></a>4. <strong>AI 集成</strong></h3><ul>
+<li><strong>Vercel AI SDK</strong> - AI 应用开发框架</li>
+<li><strong>xAI (Grok)</strong> - 主要 AI 模型提供商<ul>
+<li><code>grok-2-vision-1212</code> - 通用聊天模型</li>
+<li><code>grok-3-mini-beta</code> - 推理模型</li>
+<li><code>grok-2-1212</code> - 标题生成和文档处理</li>
+<li><code>grok-2-image</code> - 图像生成</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-文件存储"><a href="#5-文件存储" class="headerlink" title="5. 文件存储"></a>5. <strong>文件存储</strong></h3><ul>
+<li><strong>Vercel Blob</strong> - 文件上传和存储服务</li>
+</ul>
+<h3 id="6-监控与分析"><a href="#6-监控与分析" class="headerlink" title="6. 监控与分析"></a>6. <strong>监控与分析</strong></h3><ul>
+<li><strong>OpenTelemetry</strong> - 可观测性框架</li>
+<li><strong>Vercel Analytics</strong> - 性能分析</li>
+</ul>
+<h3 id="7-开发工具"><a href="#7-开发工具" class="headerlink" title="7. 开发工具"></a>7. <strong>开发工具</strong></h3><ul>
+<li><strong>Biome</strong> - 代码格式化和 Linting</li>
+<li><strong>Playwright</strong> - 端到端测试</li>
+<li><strong>Drizzle Kit</strong> - 数据库迁移工具</li>
+</ul>
+<h2 id="数据库架构"><a href="#数据库架构" class="headerlink" title="数据库架构"></a>数据库架构</h2><h3 id="核心数据表："><a href="#核心数据表：" class="headerlink" title="核心数据表："></a>核心数据表：</h3><ol>
+<li><p><strong>User</strong> - 用户表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">-</span> id: UUID (主键)<br><span class="hljs-operator">-</span> email: <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">64</span>)<br><span class="hljs-operator">-</span> password: <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">64</span>) (哈希加密)<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Chat</strong> - 聊天会话表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">-</span> id: UUID (主键)<br><span class="hljs-operator">-</span> createdAt: <span class="hljs-type">TIMESTAMP</span><br><span class="hljs-operator">-</span> title: TEXT<br><span class="hljs-operator">-</span> userId: UUID (外键)<br><span class="hljs-operator">-</span> visibility: ENUM(<span class="hljs-string">&#x27;public&#x27;</span>, <span class="hljs-string">&#x27;private&#x27;</span>)<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Message_v2</strong> - 消息表（支持多部分消息）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">-</span> id: UUID (主键)<br><span class="hljs-operator">-</span> chatId: UUID (外键)<br><span class="hljs-operator">-</span> role: <span class="hljs-type">VARCHAR</span><br><span class="hljs-operator">-</span> parts: JSON (消息内容部分)<br><span class="hljs-operator">-</span> attachments: JSON (附件信息)<br><span class="hljs-operator">-</span> createdAt: <span class="hljs-type">TIMESTAMP</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Document</strong> - 文档表（Artifacts）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">-</span> id: UUID<br><span class="hljs-operator">-</span> createdAt: <span class="hljs-type">TIMESTAMP</span><br><span class="hljs-operator">-</span> title: TEXT<br><span class="hljs-operator">-</span> content: TEXT<br><span class="hljs-operator">-</span> kind: ENUM(<span class="hljs-string">&#x27;text&#x27;</span>, <span class="hljs-string">&#x27;code&#x27;</span>, <span class="hljs-string">&#x27;image&#x27;</span>, <span class="hljs-string">&#x27;sheet&#x27;</span>)<br><span class="hljs-operator">-</span> userId: UUID (外键)<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Vote_v2</strong> - 消息评分表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">-</span> chatId: UUID (外键)<br><span class="hljs-operator">-</span> messageId: UUID (外键)<br><span class="hljs-operator">-</span> isUpvoted: <span class="hljs-type">BOOLEAN</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="业务实现流程"><a href="#业务实现流程" class="headerlink" title="业务实现流程"></a>业务实现流程</h2><h3 id="1-用户认证流程"><a href="#1-用户认证流程" class="headerlink" title="1. 用户认证流程"></a>1. <strong>用户认证流程</strong></h3><pre><code class=" mermaid">graph TD
+    A[用户访问] --&gt; B&#123;是否有Token?&#125;
+    B --&gt;|否| C[重定向到Guest登录]
+    C --&gt; D[创建Guest用户]
+    D --&gt; E[生成JWT Token]
+    B --&gt;|是| F[验证Token]
+    F --&gt; G[获取用户类型]
+    G --&gt; H[设置权限限制]
+</code></pre>
+
+<h3 id="2-聊天消息处理流程"><a href="#2-聊天消息处理流程" class="headerlink" title="2. 聊天消息处理流程"></a>2. <strong>聊天消息处理流程</strong></h3><pre><code class=" mermaid">graph TD
+    A[接收聊天请求] --&gt; B[验证用户身份]
+    B --&gt; C[检查消息限制]
+    C --&gt; D&#123;是否超出限制?&#125;
+    D --&gt;|是| E[返回限制错误]
+    D --&gt;|否| F[保存用户消息]
+    F --&gt; G[初始化AI流处理]
+    G --&gt; H[调用AI模型]
+    H --&gt; I[处理工具调用]
+    I --&gt; J[流式返回响应]
+    J --&gt; K[保存AI响应]
+</code></pre>
+
+<h3 id="3-Artifact-系统"><a href="#3-Artifact-系统" class="headerlink" title="3. Artifact 系统"></a>3. <strong>Artifact 系统</strong></h3><p>支持四种类型的文档生成：</p>
+<ul>
+<li><strong>Text</strong> - 文本文档</li>
+<li><strong>Code</strong> - 代码文档</li>
+<li><strong>Image</strong> - 图像生成</li>
+<li><strong>Sheet</strong> - 表格数据</li>
+</ul>
+<p>每种类型都有专门的处理器：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">DocumentHandler</span> &#123;<br>  <span class="hljs-attr">kind</span>: <span class="hljs-title class_">ArtifactKind</span>;<br>  <span class="hljs-attr">onCreateDocument</span>: <span class="hljs-function">(<span class="hljs-params">args</span>) =&gt;</span> <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt;;<br>  <span class="hljs-attr">onUpdateDocument</span>: <span class="hljs-function">(<span class="hljs-params">args</span>) =&gt;</span> <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-流处理架构"><a href="#4-流处理架构" class="headerlink" title="4. 流处理架构"></a>4. <strong>流处理架构</strong></h3><ul>
+<li>使用 <strong>Resumable Streams</strong> 实现可恢复的流处理</li>
+<li>支持 Redis 缓存的流状态管理</li>
+<li>实时数据传输通过 Server-Sent Events (SSE)</li>
+</ul>
+<h3 id="5-权限管理系统"><a href="#5-权限管理系统" class="headerlink" title="5. 权限管理系统"></a>5. <strong>权限管理系统</strong></h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> entitlements = &#123;<br>  <span class="hljs-attr">guest</span>: &#123;<br>    <span class="hljs-attr">maxMessagesPerDay</span>: <span class="hljs-number">20</span>,<br>    <span class="hljs-attr">availableChatModelIds</span>: [<span class="hljs-string">&#x27;chat-model&#x27;</span>, <span class="hljs-string">&#x27;chat-model-reasoning&#x27;</span>]<br>  &#125;,<br>  <span class="hljs-attr">regular</span>: &#123;<br>    <span class="hljs-attr">maxMessagesPerDay</span>: <span class="hljs-number">100</span>,<br>    <span class="hljs-attr">availableChatModelIds</span>: [<span class="hljs-string">&#x27;chat-model&#x27;</span>, <span class="hljs-string">&#x27;chat-model-reasoning&#x27;</span>]<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="关键API端点"><a href="#关键API端点" class="headerlink" title="关键API端点"></a>关键API端点</h2><h3 id="聊天相关："><a href="#聊天相关：" class="headerlink" title="聊天相关："></a>聊天相关：</h3><ul>
+<li><code>POST /api/chat</code> - 发送消息，处理AI响应</li>
+<li><code>DELETE /api/chat</code> - 删除聊天会话</li>
+<li><code>GET /api/history</code> - 获取聊天历史</li>
+</ul>
+<h3 id="文档相关："><a href="#文档相关：" class="headerlink" title="文档相关："></a>文档相关：</h3><ul>
+<li><code>POST /api/document</code> - 创建&#x2F;更新文档</li>
+<li><code>GET /api/document</code> - 获取文档内容</li>
+</ul>
+<h3 id="文件处理："><a href="#文件处理：" class="headerlink" title="文件处理："></a>文件处理：</h3><ul>
+<li><code>POST /api/files/upload</code> - 文件上传</li>
+</ul>
+<h3 id="其他功能："><a href="#其他功能：" class="headerlink" title="其他功能："></a>其他功能：</h3><ul>
+<li><code>POST /api/vote</code> - 消息评分</li>
+<li><code>GET /api/suggestions</code> - 获取建议</li>
+</ul>
+<h1 id="五、个人处理"><a href="#五、个人处理" class="headerlink" title="五、个人处理"></a>五、个人处理</h1>
                 
               </div>
             
@@ -281,6 +415,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="../../../../tags/AI/" class="print-no-link">#AI</a>
+      
+    </div>
   
 </div>
 

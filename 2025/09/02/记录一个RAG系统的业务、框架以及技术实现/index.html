@@ -19,15 +19,22 @@
   <meta name="author" content="君实">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="具体的业务流程  数据流架构图  代码层面  一个RAG系统 ，业务的复杂度更多的在于权限的控制 ，会话管理  ，文档的管理 ，而偏向于AI方面的 ，更多的是文本的分块处理 ，检索的策略 等。  而一个后端开发人员，理解业务的复杂度的同时 ，也学会微调相关的参数  ，模型的相关调用 。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="记录一个RAG系统的业务、框架以及技术实现">
 <meta property="og:url" content="http://example.com/2025/09/02/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="星月夜">
+<meta property="og:description" content="具体的业务流程  数据流架构图  代码层面  一个RAG系统 ，业务的复杂度更多的在于权限的控制 ，会话管理  ，文档的管理 ，而偏向于AI方面的 ，更多的是文本的分块处理 ，检索的策略 等。  而一个后端开发人员，理解业务的复杂度的同时 ，也学会微调相关的参数  ，模型的相关调用 。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/09/02/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/1756815491066.png">
+<meta property="og:image" content="http://example.com/2025/09/02/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/1756815539249.png">
+<meta property="og:image" content="http://example.com/2025/09/02/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/1756815626959.png">
 <meta property="article:published_time" content="2025-09-02T12:11:38.000Z">
-<meta property="article:modified_time" content="2025-09-02T12:11:38.300Z">
+<meta property="article:modified_time" content="2026-01-08T03:27:47.749Z">
 <meta property="article:author" content="君实">
+<meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2025/09/02/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/1756815491066.png">
   
   
   
@@ -220,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          109 字
         
       </span>
     
@@ -273,7 +280,15 @@
             
               <div class="markdown-body">
                 
-                
+                <p>具体的业务流程</p>
+<p><img src="/2025/09/02/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/1756815491066.png" srcset="/img/loading.gif" lazyload alt="1756815491066"></p>
+<p>数据流架构图</p>
+<p><img src="/2025/09/02/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/1756815539249.png" srcset="/img/loading.gif" lazyload alt="1756815539249"></p>
+<p>代码层面</p>
+<p><img src="/2025/09/02/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AARAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%9A%E5%8A%A1%E3%80%81%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/1756815626959.png" srcset="/img/loading.gif" lazyload alt="1756815626959"></p>
+<p>一个RAG系统 ，业务的复杂度更多的在于权限的控制 ，会话管理  ，文档的管理 ，而偏向于AI方面的 ，更多的是文本的分块处理 ，检索的策略 等。 </p>
+<p>而一个后端开发人员，理解业务的复杂度的同时 ，也学会微调相关的参数  ，模型的相关调用 。</p>
+
                 
               </div>
             
@@ -281,6 +296,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="../../../../tags/AI/" class="print-no-link">#AI</a>
+      
+    </div>
   
 </div>
 
